@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Proza+Libre:wght@400;500;600&display=swap');
+
+@import "./nav.css";
+@import "./hero.css";
+@import "./benefits.css";
+
+:root {
+  --primary-font: 'Poppins', sans-serif;
+  --secondary-font: 'Staatliches', cursive;
+  --heading-font: 'Proza Libre', sans-serif;
+  --body-font-color: #515151;
+  --heading-font-color: #252525;
+  --secondary-font-color: #E56948;
+  --primary-color: #FA885F;
+  --secondary-color: #ADEEF8;
+}
+
+body {
+  background-color: #2883A6;
+  margin: 0;
+  padding: 0;
+  font-family: var(--primary-font);
+  color: var(--body-font-color);
+  font-size: 16px;
+  letter-spacing: 1px;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  letter-spacing: 2px;
+  cursor: pointer;
+  border: none;
+}
+
+section {
+  background-color: white;
+  height: fit-content;
+  padding: 50px 0px;
+}
+
+h1 {
+  font-family: var(--heading-font);
+}
+
+p {
+  line-height: 30px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1225px;
+  margin: 0 auto;
+  padding: 0 24px;
+}

@@ -1,0 +1,58 @@
+nav {
+  background-color: white;
+  padding: 20px;
+  z-index: 100;
+}
+
+
+.nav-items {
+  display: flex;
+}
+
+nav .left,
+nav .middle,
+nav .right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+nav .middle {
+  justify-content: center;
+}
+
+nav .right {
+  justify-content: flex-end;
+}
+
+nav .left {
+  justify-content: flex-start;
+}
+
+nav .logo {
+  font-family: var(--secondary-font);
+  font-size: 32px;
+  letter-spacing: 3px;
+  color: var(--heading-font-color);
+  cursor: pointer;
+}
+
+nav .nav-links {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+nav .nav-link {
+  margin-right: 50px;
+}
+
+nav .nav-link:last-of-type {
+  margin-right: 0px;
+}
+
+nav .ride-button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  border: none;
+}

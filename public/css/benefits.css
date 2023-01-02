@@ -1,0 +1,9 @@
+.advantage-title {
+  font-size: 36px;
+  color: var(--secondary-font-color);
+  text-align: center;
+}
+
+.advantage-section p {
+  text-align: center;
+}
