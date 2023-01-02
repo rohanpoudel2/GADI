@@ -6,9 +6,8 @@
         <div class="middle">
             <div class="nav-links">
                 <span class="nav-link">Home</span>
-                <span class="nav-link">About</span>
                 <span class="nav-link">Shop</span>
-                <span class="nav-link">Awesome</span>
+                <span class="nav-link">About</span>
             </div>
         </div>
         <div class="right">

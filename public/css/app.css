@@ -6,6 +6,7 @@
 @import "./benefits.css";
 @import "./featured.css";
 @import "./newsletter.css";
+@import "./footer.css";
 
 *,
 *::before,
@@ -24,6 +25,7 @@
   --secondary-font-color: #E56948;
   --primary-color: #FA885F;
   --secondary-color: #ADEEF8;
+  --footer-color: #F5DECA;
 }
 
 body {
