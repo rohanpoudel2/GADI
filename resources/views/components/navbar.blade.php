@@ -1,12 +1,12 @@
 <nav>
     <div class="nav-items">
         <div class="left">
-            <div class="logo">GADI</div>
+            <div class="logo"><a href="/">GADI</a></div>
         </div>
         <div class="middle">
             <div class="nav-links">
-                <span class="nav-link">Home</span>
-                <span class="nav-link">Shop</span>
+                <span class="nav-link"><a href="/">Home</a></span>
+                <span class="nav-link"><a href="/shop">Shop</a></span>
                 <span class="nav-link">About</span>
             </div>
         </div>

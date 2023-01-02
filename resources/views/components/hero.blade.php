@@ -1,6 +1,6 @@
 <div class="hero">
     <div class="hero-image">
-        <img src="{{ asset('images/hero_image.jpg') }}" alt="hero-image">
+        <img src="{{ $image }}" alt="hero-image">
     </div>
     <div class="container">
         <div class="hero-title">
