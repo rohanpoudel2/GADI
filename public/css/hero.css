@@ -3,7 +3,7 @@
   align-items: center;
   flex-direction: column;
   height: 80vh;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .hero-image {
@@ -29,7 +29,7 @@
 .hero-title span {
   font-size: 12px;
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
   cursor: pointer;
 }
 

@@ -4,6 +4,15 @@
 @import "./nav.css";
 @import "./hero.css";
 @import "./benefits.css";
+@import "./featured.css";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 :root {
   --primary-font: 'Poppins', sans-serif;

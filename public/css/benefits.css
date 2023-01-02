@@ -7,3 +7,53 @@
 .advantage-section p {
   text-align: center;
 }
+
+.advantages {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 80px 0px;
+}
+
+.advantage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 250px;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.advantage .icon {
+  width: 100px;
+  height: 100px;
+}
+
+.advantage img {
+  width: 100%;
+  height: 100%;
+}
+
+.advantage .title span {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.advantage .desc p {
+  font-size: 12px;
+}
+
+.advantage:nth-of-type(1) {
+  background-color: #E4FAFD;
+}
+
+.advantage:nth-of-type(2) {
+  background-color: #FDF6E6;
+}
+
+.advantage:nth-of-type(3) {
+  background-color: #F1FEEF;
+}
