@@ -16,7 +16,8 @@
         @endcomponent
     </div>
     {{ $slot }}
-
+    @component('components.newsletter')
+    @endcomponent
 </body>
 
 </html>
