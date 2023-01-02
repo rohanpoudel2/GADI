@@ -7,4 +7,6 @@
             <h1>Look Around<br /> See what you like</h1>
         @endslot
     @endcomponent
+    @component('components.cards')
+    @endcomponent
 </x-layout>
