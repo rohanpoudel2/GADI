@@ -5,19 +5,17 @@
     <div class="container">
         <div class="hero-title">
             <span>Buy a car now and get 10% off</span>
-            <h1> Make your driving<br /> more exciting</h1>
+            {{ $title }}
         </div>
         <div class="hero-desc">
-            <div class="left">
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt atque ratione a autem quam illo quae
-                    accusamus sint? Enim ex iusto corrupti ratione quod sapiente aliquid vitae voluptatum odit
-                    consequatur.
-                </p>
-            </div>
-            <div class="right">
-                <button class="book-button">Book Now</button>
-            </div>
+            @if (isset($desc))
+                <div class="left">
+                    {{ $desc }}
+                </div>
+                <div class="right">
+                    <button class="book-button">Book Now</button>
+                </div>
+            @endif
         </div>
     </div>
 </div>
