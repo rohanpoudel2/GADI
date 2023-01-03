@@ -1,0 +1,39 @@
+.product-confirmation .product-confirm {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--primary-color);
+  padding: 20px;
+}
+
+.product-confirm .product-image {
+  width: 150px;
+  height: 150px;
+}
+
+.product-confirm .product-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.product-confirm .product {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.product-confirm .product .product-spe {
+  margin-left: 20px;
+}
+
+.product-spe .product-title h1 {
+  font-size: 42px;
+}
+
+.product-confirm .product .buy-button {
+  padding: 10px 20px;
+  margin: 0px 0px 0px auto;
+  background-color: var(--secondary-color);
+  border-radius: 50px;
+}

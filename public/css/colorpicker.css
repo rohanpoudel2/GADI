@@ -1,9 +1,14 @@
 .color-picker .title {
   font-size: 28px;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .color-cards {
   display: flex;
   flex-direction: column;
+}
+
+.color-cards .title {
+  margin-bottom: 0px;
 }

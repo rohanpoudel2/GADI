@@ -3,4 +3,6 @@
     @endcomponent
     @component('components.colorpicker')
     @endcomponent
+    @component('components.productconfirmation')
+    @endcomponent
 </x-layout>

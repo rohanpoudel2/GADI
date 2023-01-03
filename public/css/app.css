@@ -12,6 +12,7 @@
 @import "./bigproduct.css";
 @import "./colorpicker.css";
 @import './colorcard.css';
+@import './productconfirmation.css';
 
 *,
 *::before,
