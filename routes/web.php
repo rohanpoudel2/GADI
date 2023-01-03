@@ -24,3 +24,7 @@ Route::get('/shop', function () {
 Route::get('/shop/product/{id}', function ($id) {
     return view('product');
 });
+
+Route::get('/contact', function () {
+    return view('contact');
+});

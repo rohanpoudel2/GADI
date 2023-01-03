@@ -4,7 +4,11 @@
             <h1 class="title">BMW M4 CSL</h1>
         </div>
         <div class="right">
-            <button class="buy-button">Buy Now</button>
+            <button class="buy-button">
+                <a href="/shop/product/1">
+                    Buy Now
+                </a>
+            </button>
         </div>
     </div>
     <div class="middle">

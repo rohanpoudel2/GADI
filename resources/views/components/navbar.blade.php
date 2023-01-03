@@ -7,7 +7,7 @@
             <div class="nav-links">
                 <span class="nav-link"><a href="/">Home</a></span>
                 <span class="nav-link"><a href="/shop">Shop</a></span>
-                <span class="nav-link">About</span>
+                <span class="nav-link">Contact</span>
             </div>
         </div>
         <div class="right">
