@@ -9,6 +9,9 @@
 @import "./footer.css";
 @import "./cards.css";
 @import "./card.css";
+@import "./bigproduct.css";
+@import "./colorpicker.css";
+@import './colorcard.css';
 
 *,
 *::before,

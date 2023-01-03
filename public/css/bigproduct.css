@@ -1,0 +1,17 @@
+.big-product-section .bigproduct {
+  display: flex;
+  flex-direction: column;
+}
+
+.bigproduct .product-title h1 {
+  font-size: 42px;
+}
+
+.bigproduct .product-image {
+  margin: 20px 0px;
+}
+
+.bigproduct .product-image img {
+  width: 100%;
+  height: 100%;
+}
