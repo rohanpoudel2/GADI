@@ -24,14 +24,14 @@
         '
         <div class="form-item">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" >
+            <input type="text" name="name" id="name" required>
         </div>
         ',
     
         '
         <div class="form-item">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" >
+            <input type="email" name="email" id="email" required>
         </div>
         ',
     
@@ -39,7 +39,7 @@
         <div class="form-item">
             <label for="message">Select the car you want to test ride:</label>
             
-            <select name="selected-car" id="selected-car">
+            <select name="selected-car" id="selected-car" required>
                 <option value="BMW M4 CSL">BMW M3 CSL</option>
                 <option value="BMW M4 CSL">BMW M4 CSL</option>
                 <option value="BMW M4 CSL">BMW M8 CSL</option>

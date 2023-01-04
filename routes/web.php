@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,5 @@ Route::get('/shop/product/{id}', function ($id) {
 Route::get('/contact', function () {
     return view('contact');
 });
+
+Route::POST('/test-form', [FormController::class, 'testRideForm']);

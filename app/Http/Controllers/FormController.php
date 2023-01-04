@@ -22,7 +22,7 @@ class FormController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return redirect('/')
+      return redirect('/error')
         ->withErrors($validator)
         ->withInput();
     }
