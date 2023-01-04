@@ -12,14 +12,13 @@
 
 <body>
     <div class="container">
-        @component('components.navbar')
-        @endcomponent
+        @include('components.navbar')
     </div>
     {{ $slot }}
-    @component('components.newsletter')
-    @endcomponent
-    @component('components.footer')
-    @endcomponent
+    @if (!isset($dontshow))
+        @include('components.newsletter')
+    @endif
+    @include('components.footer')
 </body>
 
 </html>
