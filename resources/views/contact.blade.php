@@ -1,24 +1,26 @@
 <x-layout dontshow="true">
     @php
         $formFields = [
-            [
-                'name' => 'name',
-                'label' => 'Name',
-                'type' => 'text',
-                'value' => '',
-            ],
-            [
-                'name' => 'email',
-                'label' => 'Email',
-                'type' => 'email',
-                'value' => '',
-            ],
-            [
-                'name' => 'message',
-                'label' => 'Message',
-                'type' => 'textarea',
-                'value' => '',
-            ],
+            '
+                <div class="form-item">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" >
+                </div>
+                ',
+        
+            '
+                <div class="form-item">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" >
+                </div>
+                ',
+        
+            '
+                <div class="form-item">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                </div>
+                ',
         ];
     @endphp
 

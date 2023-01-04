@@ -3,9 +3,7 @@
     <div class="form-items">
         @foreach ($formFields as $formField)
             <div class="form-item">
-                <label for="{{ $formField['name'] }}">{{ $formField['label'] }}</label>
-                <input type="{{ $formField['type'] }}" name="{{ $formField['name'] }}" id="{{ $formField['name'] }}"
-                    value="{{ $formField['value'] }}">
+                {!! $formField !!}
             </div>
         @endforeach
     </div>

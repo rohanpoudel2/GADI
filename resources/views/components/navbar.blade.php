@@ -12,7 +12,7 @@
         </div>
         <div class="right">
             <div class="nav-button">
-                <button class="ride-button">Ride Now</button>
+                <button class="ride-button">Book Test Ride</button>
             </div>
         </div>
     </div>
