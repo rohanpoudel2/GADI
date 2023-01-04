@@ -56,3 +56,61 @@ nav .ride-button {
   background-color: var(--primary-color);
   border: none;
 }
+
+.test-ride-form {
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 5px solid var(--primary-color);
+  border-radius: 50px;
+  width: 800px;
+  height: 400px;
+  box-shadow: -1px 1px 5px 6px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: -1px 1px 5px 6px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: -1px 1px 5px 6px rgba(0, 0, 0, 0.15);
+}
+
+.test-ride-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.test-ride-form form .form-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.test-ride-form form .form-item label {
+  margin: 10px 0px;
+  font-weight: 500;
+}
+
+.test-ride-form form button {
+  padding: 10px 15px;
+  margin-top: 20px;
+  background-color: var(--primary-color);
+  border-radius: 50px;
+  font-weight: 500;
+}
+
+.test-ride-form .quit-form {
+  position: absolute;
+  right: 20px;
+  font-size: 23px;
+  background-color: lightsalmon;
+  padding: 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.test-ride-form form input {
+  padding: 10px 5px;
+}
