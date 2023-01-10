@@ -11,8 +11,27 @@
                 </p>
             </div>
             <div class="socials">
-                <div class="social">Login</div>
-                <div class="social">Signup</div>
+                @if (Route::has('login'))
+                    <div class="hidden">
+                        @auth
+                            <div class="social">
+                                <a href="{{ url('/dashboard') }}"
+                                    class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                            </div>
+                        @else
+                            <div class="social">
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log
+                                    in</a>
+                            </div>
+                            @if (Route::has('register'))
+                                <div class="social">
+                                    <a href="{{ route('register') }}"
+                                        class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                </div>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
             </div>
         </div>
         <div class="middle">
