@@ -1,3 +1,10 @@
+import './bootstrap';
+
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
 
 const ride_button = document.getElementById('ride-button');
 const testRideForm = document.getElementById('test-ride-form');
