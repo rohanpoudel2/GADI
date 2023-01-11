@@ -23,15 +23,6 @@
     <div>
         @include('layouts.navigation')
 
-        <!-- Page Heading -->
-        @if (isset($header))
-            <header>
-                <div>
-                    {{ $header }}
-                </div>
-            </header>
-        @endif
-
         <!-- Page Content -->
         <main>
             {{ $slot }}

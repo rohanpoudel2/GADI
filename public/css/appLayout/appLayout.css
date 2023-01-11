@@ -1,5 +1,3 @@
 @import './dashboardNav.css';
-
-body {
-  background-color: #F3F0EE !important;
-}
+@import './dashboard.css';
+@import './profilePage.css';

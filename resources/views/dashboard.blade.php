@@ -1,7 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2>
-            This is Dashboard
-        </h2>
-    </x-slot>
+    <div class="dashboard">
+        This is dashboard
+    </div>
 </x-app-layout>
