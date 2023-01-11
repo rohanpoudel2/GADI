@@ -5,16 +5,17 @@
 @import "./hero.css";
 @import "./benefits.css";
 @import "./featured.css";
-@import "./newsletter.css";
+@import "./newsLetter.css";
 @import "./footer.css";
 @import "./cards.css";
 @import "./card.css";
-@import "./bigproduct.css";
-@import "./colorpicker.css";
-@import './colorcard.css';
-@import './productconfirmation.css';
+@import "./bigProduct.css";
+@import "./colorPicker.css";
+@import './colorCard.css';
+@import './productConfirmation.css';
 @import './contact.css';
-@import './guestlogin.css';
+@import './guestLogin.css';
+@import './appLayout/appLayout.css';
 
 *,
 *::before,
