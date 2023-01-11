@@ -8,5 +8,8 @@
         @endslot
     @endcomponent
     @component('components.cards')
+        @slot('cars')
+            {{ $cars }}
+        @endslot
     @endcomponent
 </x-layout>

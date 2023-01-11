@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +19,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/shop', function () {
-    return view('shop');
-});
+Route::get('/shop', [CarController::class, 'index'])->name('cars.show');
 
 Route::get('/shop/product/{id}', function () {
     return view('product');

@@ -16,6 +16,8 @@ class CarController extends Controller
     public function index()
     {
         //
+        $cars = Car::with('brand')->paginate(5);
+        return view('shop', compact('cars'));
     }
 
     /**

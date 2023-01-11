@@ -4,30 +4,13 @@
             <h1>We Offer Massive Selection of Cars</h1>
         </div>
         <div class="cards">
-            @component('components.card')
-            @endcomponent
-            @component('components.card')
-            @endcomponent
-            @component('components.card')
-            @endcomponent
-            @component('components.card')
-            @endcomponent
-            @component('components.card')
-            @endcomponent
-            @component('components.card')
-            @endcomponent
-            @component('components.card')
-            @endcomponent
-            @component('components.card')
-            @endcomponent
-            @component('components.card')
-            @endcomponent
-            @component('components.card')
-            @endcomponent
-            @component('components.card')
-            @endcomponent
-            @component('components.card')
-            @endcomponent
+            @foreach ($cars as $car)
+                @component('components.card')
+                    @slot('car')
+                        {{ $car }}
+                    @endslot
+                @endcomponent
+            @endforeach
         </div>
     </div>
 </section>

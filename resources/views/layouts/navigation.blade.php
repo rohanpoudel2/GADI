@@ -22,6 +22,12 @@
             </a>
         </div>
         <div class="dashboard-nav-item">
+            <a href="{{ route('profile.edit') }}">
+                <i class="fa-solid fa-car"></i>
+                Cars
+            </a>
+        </div>
+        <div class="dashboard-nav-item">
             <form method="POST" action="{{ route('logout') }}"
                 onclick="event.preventDefault();
                             this.closest('form').submit();">
