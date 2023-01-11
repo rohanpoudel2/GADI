@@ -1,0 +1,59 @@
+.guest-login-body {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100vw;
+  height: 80vh;
+  font-family: var(--primary-font);
+}
+
+.guest-login-body .login-form .login-form-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.guest-login-body .left {
+  flex: 1;
+  margin-right: 100px;
+}
+
+.guest-login-body .right {
+  flex: 1;
+  padding: 20px;
+  max-width: 500px;
+}
+
+.login-form-items .form-item input {
+  border-radius: 50px;
+  margin: 10px 0px;
+  width: 100%;
+}
+
+.login-form-items .form-item .input-checkbox {
+  width: 15px;
+  height: 15px;
+}
+
+.login-form-items .form-item .forgot-password {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: var(--secondary-font-color);
+  text-decoration: underline;
+}
+
+.login-form-items .form-item .login-button {
+  background-color: var(--secondary-color);
+  padding: 10px 5px;
+  margin: 0px auto;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.login-body h1 {
+  font-size: 42px;
+  font-weight: bold;
+  font-family: var(--heading-font);
+}

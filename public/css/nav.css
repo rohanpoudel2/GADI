@@ -56,6 +56,20 @@ nav .ride-button {
   border: none;
 }
 
+nav .login-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav .login-link {
+  cursor: pointer;
+}
+
+nav .login-link:first-of-type {
+  margin-right: 50px;
+}
+
 .test-ride-form {
   position: fixed;
   z-index: 100;

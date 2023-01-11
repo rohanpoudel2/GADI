@@ -1,19 +1,40 @@
+@php
+    $isLogin = Request::is('login');
+    $isRegister = Request::is('register');
+    $isForgot = Request::is('forgot-password');
+@endphp
+
 <nav>
     <div class="nav-items">
         <div class="left">
             <div class="logo"><a href="/">GADI</a></div>
         </div>
-        <div class="middle">
-            <div class="nav-links">
-                <span class="nav-link"><a href="/">Home</a></span>
-                <span class="nav-link"><a href="/shop">Shop</a></span>
-                <span class="nav-link"><a href="/contact">Contact</a></span>
+        @if (!($isLogin || $isRegister || $isForgot))
+            <div class="middle">
+                <div class="nav-links">
+                    <span class="nav-link"><a href="/">Home</a></span>
+                    <span class="nav-link"><a href="/shop">Shop</a></span>
+                    <span class="nav-link"><a href="/contact">Contact</a></span>
+                </div>
             </div>
-        </div>
+        @endif
         <div class="right">
-            <div class="nav-button">
-                <button class="ride-button" id="ride-button">Book Test Ride</button>
-            </div>
+            @if ($isLogin || $isRegister || $isForgot)
+                <div class="login-links">
+                    <div class="login-link"
+                        @if ($isLogin) style="background-color: var(--primary-color); padding: 5px; border-radius:10px" @endif>
+                        <a href="/login">Login</a>
+                    </div>
+                    <div class="login-links"
+                        @if ($isRegister) style="background-color: var(--primary-color); padding: 5px; border-radius:10px" @endif>
+                        <a href="/register">Sign Up</a>
+                    </div>
+                </div>
+            @else
+                <div class="nav-button">
+                    <button class="ride-button" id="ride-button">Book Test Ride</button>
+                </div>
+            @endif
         </div>
     </div>
 </nav>
