@@ -11,7 +11,7 @@ class Car extends Model
 
     protected $fillable = [
         'brand_id',
-        'make',
+        'type',
         'model',
         'year',
         'engine',
@@ -20,7 +20,8 @@ class Car extends Model
         'interior',
         'transmission',
         'description',
-        'colors'
+        'colors',
+        'price'
     ];
 
     public function brand()

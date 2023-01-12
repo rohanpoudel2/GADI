@@ -41,7 +41,7 @@ class CarController extends Controller
         //
         $data = $request->validate([
             'brand_id' => 'required|integer|exists:brands,id',
-            'make' => 'required|string',
+            'type' => 'required|string',
             'model' => 'required|string',
             'year' => 'required|integer',
             'engine' => 'required|string',
@@ -51,6 +51,7 @@ class CarController extends Controller
             'transmission' => 'required|string',
             'description' => 'required|string|min:100|max:2000',
             'colors' => 'required|string',
+            'price' => 'required|float',
         ]);
 
         $brand = Brand::find($data['brand_id']);

@@ -22,9 +22,15 @@
             </a>
         </div>
         <div class="dashboard-nav-item">
-            <a href="{{ route('profile.edit') }}">
+            <a href="{{ route('dashboard.showCars') }}">
                 <i class="fa-solid fa-car"></i>
                 Cars
+            </a>
+        </div>
+        <div class="dashboard-nav-item">
+            <a href="{{ route('dashboard.showBrands') }}">
+                <i class="fa-brands fa-bandcamp"></i>
+                Brands
             </a>
         </div>
         <div class="dashboard-nav-item">

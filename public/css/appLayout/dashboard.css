@@ -1,8 +1,8 @@
 .dashboard {
-  width: 100vw;
   height: 100vh;
   margin-left: 200px;
   padding: 20px;
   background-color: #F3F0EE !important;
   border-radius: 50px 0px 0px 50px;
+  overflow: hidden;
 }

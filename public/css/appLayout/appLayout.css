@@ -1,3 +1,34 @@
 @import './dashboardNav.css';
 @import './dashboard.css';
 @import './profilePage.css';
+@import './showCars.css';
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actions .delete,
+.actions .edit {
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.actions .delete {
+  color: red;
+}
+
+.actions .edit {
+  color: var(--primary-color);
+}
+
+#dataTable {
+  width: 100% !important;
+}
+
+#dataTable .brand-logo {
+  width: 50px !important;
+  height: 50px !important;
+  object-fit: cover !important;
+}

@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->engine = "InnoDB";
             $table->id();
             $table->bigInteger('brand_id')->unsigned();
-            $table->string('make');
+            $table->string('type');
             $table->string('model');
             $table->integer('year');
             $table->string('engine');
@@ -26,6 +26,7 @@ return new class extends Migration {
             $table->string('transmission');
             $table->text('description');
             $table->json('colors');
+            $table->float('price');
             $table->timestamps();
         });
 

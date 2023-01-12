@@ -30,8 +30,16 @@ Route::get('/contact', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/cars', function () {
+    return view('dashboard.showDataTable');
+})->middleware(['auth', 'verified'])->name('dashboard.showCars');
+
+Route::get('/brands', function () {
+    return view('dashboard.showDataTable');
+})->middleware(['auth', 'verified'])->name('dashboard.showBrands');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
