@@ -66,7 +66,7 @@
             </tbody>
         </table>
     @else
-        <table id="dataTable" class="hover compact">
+        <table id="dataTable" class="hover">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -76,26 +76,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        <img src="https://www.pngmart.com/files/3/BMW-Logo-PNG-File.png" alt="brandLogo"
-                            class="brand-logo">
-                    </td>
-                    <td>BMW</td>
-                    <td>
-                        <div class="actions">
-                            <div class="delete">
-                                <i class="fa-solid fa-trash"></i>
+                @foreach ($brands as $brand)
+                    <tr>
+                        <td>
+                            {{ $brand->id }}
+                        </td>
+                        <td>
+                            <img src="{{ Storage::url($brand->image) }}" alt="brandLogo" class="brand-logo">
+                        </td>
+                        <td>{{ $brand->name }}</td>
+                        <td>
+                            <div class="actions">
+                                <div class="delete">
+                                    <i class="fa-solid fa-trash"></i>
+                                </div>
+                                <div class="edit">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </div>
                             </div>
-                            <div class="edit">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     @endif

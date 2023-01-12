@@ -2,6 +2,7 @@
 @import './dashboard.css';
 @import './profilePage.css';
 @import './showCars.css';
+@import './addNew.css';
 
 .actions {
   display: flex;

@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,9 +39,13 @@ Route::get('/cars', function () {
     return view('dashboard.showDataTable');
 })->middleware(['auth', 'verified'])->name('dashboard.showCars');
 
-Route::get('/brands', function () {
-    return view('dashboard.showDataTable');
-})->middleware(['auth', 'verified'])->name('dashboard.showBrands');
+Route::get('/addCar', [CarController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard.addCar');
+Route::post('/addCar', [CarController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard.addCar');
+
+Route::get('/addBrand', [BrandController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard.addBrand');
+Route::post('/addBrand', [BrandController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard.addBrand');
+
+Route::get('/brands', [BrandController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard.showBrands');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

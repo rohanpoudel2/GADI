@@ -15,6 +15,7 @@ return new class extends Migration {
         Schema::create('cars', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
+            $table->text('image')->nullable();
             $table->bigInteger('brand_id')->unsigned();
             $table->string('type');
             $table->string('model');

@@ -1,0 +1,59 @@
+.dashboard-addNew {
+  height: 100vh;
+  margin-left: 200px;
+  padding: 50px;
+  background-color: #F3F0EE !important;
+  border-radius: 50px 0px 0px 50px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.dashboard-addNew .topbar {
+  margin-bottom: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.dashboard-addNew .form-section .form-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+}
+
+.dashboard-addNew .form-section .form-item {
+  width: 30%;
+}
+
+.dashboard-addNew .form-section .form-item label {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-addNew .form-section .form-item input {
+  padding: 10px 10px;
+  border-radius: 20px;
+}
+
+.dashboard-addNew .form-section .form-item textarea {
+  border-radius: 20px;
+}
+
+.dashboard-addNew .form-section .form-item .color {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-addNew .form-section .form-item .colors input {
+  padding: 5px 5px;
+}
+
+.dashboard-addNew .form-section button {
+  background-color: var(--primary-color);
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-top: 50px;
+}

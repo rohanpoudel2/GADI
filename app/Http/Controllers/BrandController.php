@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class BrandController extends Controller
 {
@@ -12,9 +13,11 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         //
+        $brands = Brand::get();
+        return view('dashboard.showDataTable', compact('brands'));
     }
 
     /**
@@ -22,9 +25,10 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         //
+        return view('dashboard.addNew');
     }
 
     /**
@@ -36,12 +40,17 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
+        $data = $request->validate([
+            'image' => 'required|image|mimes:png,jpeg,jpg|max:2048',
             'name' => 'required|string|max:255'
         ]);
 
-        $data = $request->only(['name']);
+
+        $path = $request->file('image')->store('public/images');
+        $data['image'] = $path;
         Brand::create($data);
+
+        return redirect()->back()->with('success', 'Brand has been added.');
     }
 
     /**

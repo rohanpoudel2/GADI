@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CarController extends Controller
 {
@@ -13,7 +14,7 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         //
         $cars = Car::with('brand')->paginate(5);
@@ -25,8 +26,9 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
+        return view('dashboard.addNew');
         //
     }
 
@@ -40,6 +42,7 @@ class CarController extends Controller
     {
         //
         $data = $request->validate([
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
             'brand_id' => 'required|integer|exists:brands,id',
             'type' => 'required|string',
             'model' => 'required|string',
@@ -54,9 +57,12 @@ class CarController extends Controller
             'price' => 'required|float',
         ]);
 
+        $path = $request->file('image')->store('public/images');
+        $data['image'] = $path;
         $brand = Brand::find($data['brand_id']);
         $brand->cars()->create($data);
 
+        return redirect()->back()->with('success', 'Car had been added.');
 
     }
 

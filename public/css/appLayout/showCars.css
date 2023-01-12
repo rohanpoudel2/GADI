@@ -14,7 +14,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .dashboard-showCars .topbar .title {
