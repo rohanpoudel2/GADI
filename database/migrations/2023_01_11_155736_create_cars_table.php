@@ -26,7 +26,6 @@ return new class extends Migration {
             $table->string('interior');
             $table->string('transmission');
             $table->text('description');
-            $table->json('colors');
             $table->float('price');
             $table->timestamps();
         });

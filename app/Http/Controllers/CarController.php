@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Car;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -14,11 +15,20 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): View
+    public function index(Request $request): View
     {
         //
-        $cars = Car::with('brand')->paginate(5);
-        return view('shop', compact('cars'));
+        if($request->route()->getName() == "dashboard.showCars")
+        {
+            $cars = Car::with('brand')->get();
+            return view('dashboard.showDataTable',compact('cars'));
+        }
+        else
+        {
+            $cars = Car::with('brand')->get(5)->paginate(5);
+            return view('shop', compact('cars'));
+        }
+       
     }
 
     /**
@@ -41,10 +51,9 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         $data = $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
-            'brand_id' => 'required|integer|exists:brands,id',
+            'brand' => 'required|integer|exists:brands,id',
             'type' => 'required|string',
             'model' => 'required|string',
             'year' => 'required|integer',
@@ -53,18 +62,16 @@ class CarController extends Controller
             'topspeed' => 'required|integer',
             'interior' => 'required|string',
             'transmission' => 'required|string',
-            'description' => 'required|string|min:100|max:2000',
-            'colors' => 'required|string',
-            'price' => 'required|float',
+            'description' => 'required|string|max:2000',
+            'price' => 'required|numeric',
         ]);
 
         $path = $request->file('image')->store('public/images');
-        $data['image'] = $path;
-        $brand = Brand::find($data['brand_id']);
-        $brand->cars()->create($data);
+        $data['image']=$path;
+        $brand = Brand::findOrFail($data['brand']);
+        $car = $brand->cars()->create($data);
 
-        return redirect()->back()->with('success', 'Car had been added.');
-
+        return redirect()->route('dashboard')->with('success', 'Car has been added.');
     }
 
     /**

@@ -6,6 +6,10 @@
 
 @if ($isShowCars)
     @php
+        $options = '';
+        foreach ($brands as $brand) {
+            $options .= '<option value="' . $brand->id . '">' . $brand->name . '</option>';
+        }
         $formFields = [
             '
             <div class="form-item">
@@ -14,23 +18,22 @@
             <input type="file" name="image" id="image" required onchange="previewImage(event);" hidden/>
             </div>
             ',
-            "
-            <div class=\"form-item\">
-            <label for=\"brand\">Brand:</label>
-            <select name=\"brand\" id=\"brand\" required>
-                <option value=\"BMW\">BMW</option>
-                <option value=\"BMW\">BMW</option>
-                <option value=\"BMW\">BMW</option>
-            </select>
-            </div>
-            ",
+            '
+        <div class="form-item">
+            <label for="brand">Brand:</label>
+            <select name="brand" id="brand" required>' .
+            $options .
+            '</select>
+        </div>
+        ',
             '
             <div class="form-item">
             <label for="type">Type:</label>
             <select name="type" id="type" required>
-                <option value="SUV">SUV</option>
-                <option value="COUPE">COUPE</option>
-                <option value="SEDAN">SEDAN</option>
+                <option value="suv">SUV</option>
+                <option value="pickup">PICKUP</option>
+                <option value="sedan">SEDAN</option>
+                <option value="sport">SPORT</option>
             </select>
             </div>
             ',
@@ -82,22 +85,6 @@
             <textarea name="description" id="description" rows="4" cols="20" required>
             </textarea>
             </div>
-            ',
-            '
-            <div class="form-item colors">
-          <div class="color">
-            <label for="yellow">Yellow:</label>
-            <input type="radio" id="yellow" name="color" value="yellow"/>
-          </div>
-          <div class="color">
-            <label for="green">Green:</label>
-            <input type="radio" id="green" name="color" value="green"/>
-          </div>
-          <div class="color">
-            <label for="blue">Blue:</label>
-            <input type="radio" id="blue" name="color" value="blue"/>
-          </div>
-        </div>
             ',
             '
             <div class="form-item">

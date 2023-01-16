@@ -43,6 +43,7 @@
             /**
              * Get the selected files.
              */
+
             const imageFiles = event.target.files;
             /**
              * Count the number of files selected.

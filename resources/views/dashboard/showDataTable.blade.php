@@ -15,11 +15,11 @@
             </h1>
             <button class="add-new-car">
                 @if ($isShowCars)
-                    <a href="{{ Route('dashboard.addCar') }}">
+                    <a href="{{ Route('dashboard.addCarForm') }}">
                         Add New Car
                     </a>
                 @else
-                    <a href="{{ Route('dashboard.addBrand') }}">
+                    <a href="{{ Route('dashboard.addBrandForm') }}">
                         Add New Brand
                     </a>
                 @endif
