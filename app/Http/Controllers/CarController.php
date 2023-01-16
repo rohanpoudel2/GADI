@@ -7,6 +7,7 @@ use App\Models\Car;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Pagination\Paginator;
 
 class CarController extends Controller
 {
@@ -25,7 +26,7 @@ class CarController extends Controller
         }
         else
         {
-            $cars = Car::with('brand')->get(5)->paginate(5);
+            $cars = Car::with('brand')->paginate(5);
             return view('shop', compact('cars'));
         }
        
