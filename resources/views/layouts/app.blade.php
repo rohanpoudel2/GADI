@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -15,9 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -39,6 +37,39 @@
                 scrollX: true,
             });
         });
+    </script>
+    <script>
+        const previewImage = (event) => {
+            /**
+             * Get the selected files.
+             */
+            const imageFiles = event.target.files;
+            /**
+             * Count the number of files selected.
+             */
+            const imageFilesLength = imageFiles.length;
+            /**
+             * If at least one image is selected, then proceed to display the preview.
+             */
+            if (imageFilesLength > 0) {
+                /**
+                 * Get the image path.
+                 */
+                const imageSrc = URL.createObjectURL(imageFiles[0]);
+                /**
+                 * Select the image preview element.
+                 */
+                const imagePreviewElement = document.querySelector("#preview-selected-image");
+                /**
+                 * Assign the path to the image preview element.
+                 */
+                imagePreviewElement.src = imageSrc;
+                /**
+                 * Show the element by changing the display value to "block".
+                 */
+                imagePreviewElement.style.display = "block";
+            }
+        };
     </script>
 </body>
 

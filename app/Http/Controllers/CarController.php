@@ -28,7 +28,8 @@ class CarController extends Controller
      */
     public function create(): View
     {
-        return view('dashboard.addNew');
+        $brands = Brand::get();
+        return view('dashboard.addNew',compact('brands'));
         //
     }
 

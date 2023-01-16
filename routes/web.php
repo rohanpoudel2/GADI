@@ -31,21 +31,32 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/cars', function () {
-    return view('dashboard.showDataTable');
-})->middleware(['auth', 'verified'])->name('dashboard.showCars');
+Route::middleware('auth', 'verified', 'admin')->group(function () {
+    Route::get(
+        '/dashboard',
+        function () {
+            return view('dashboard.dashboard');
+        }
+    )->name('dashboard');
+    Route::get(
+        '/cars',
+        function () {
+            return view('dashboard.showDataTable');
+        }
+    )->name('dashboard.showCars');
+    Route::get('/addCar', [CarController::class, 'create'])->name('dashboard.addCar');
+    Route::post('/addCar', [CarController::class, 'store'])->name('dashboard.addCar');
 
-Route::get('/addCar', [CarController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard.addCar');
-Route::post('/addCar', [CarController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard.addCar');
+    Route::get('/addBrand', [BrandController::class, 'create'])->name('dashboard.addBrand');
+    Route::post('/addBrand', [BrandController::class, 'store'])->name('dashboard.addBrand');
+    Route::get('/brands', [BrandController::class, 'index'])->name('dashboard.showBrands');
+    Route::delete('/brands', [BrandController::class, 'destroy'])->name('dashboard.DestoryBrand');
 
-Route::get('/addBrand', [BrandController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard.addBrand');
-Route::post('/addBrand', [BrandController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard.addBrand');
+    Route::get('/editBrand', [BrandController::class, 'edit'])->name('dashboard.editBrand');
+    Route::patch('/editBrand', [BrandController::class, 'update'])->name('dashboard.editBrand');
 
-Route::get('/brands', [BrandController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard.showBrands');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

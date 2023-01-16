@@ -88,10 +88,24 @@
                         <td>
                             <div class="actions">
                                 <div class="delete">
-                                    <i class="fa-solid fa-trash"></i>
+                                    <form method="post" action="/brands">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="text" name="id" id="id" value="{{ $brand->id }}"
+                                            hidden>
+                                        <button type="submit">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </div>
                                 <div class="edit">
-                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    <form method="GET" action="/editBrand">
+                                        <input type="text" name="id" id="id" value="{{ $brand->id }}"
+                                            hidden>
+                                        <button type="submit">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </td>

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use PhpParser\Node\Stmt\TryCatch;
 
 class BrandController extends Controller
 {
@@ -50,7 +53,8 @@ class BrandController extends Controller
         $data['image'] = $path;
         Brand::create($data);
 
-        return redirect()->back()->with('success', 'Brand has been added.');
+        return redirect()->route('dashboard')->with('success', 'Brand has been added.');
+
     }
 
     /**
@@ -70,9 +74,18 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit(Request $request) : View | RedirectResponse
     {
         //
+        $request->validate(['id' => 'required|integer',]);
+
+        $brand = Brand::find($request->id);
+
+        if ($brand) {
+            return view('dashboard.addNew',compact('brand'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Brand Not Found.');
+        }
     }
 
     /**
@@ -82,9 +95,29 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(Request $request):RedirectResponse
     {
         //
+        try {
+            
+            $data = $request->validate([
+                'id' => 'required|integer',
+                'image' => 'image|mimes:png,jpeg,jpg|max:2048',
+                'name' => 'required|string|max:255'
+            ]);
+            $brand = Brand::findorFail($request->id);
+
+            if(!$request->hasFile('image')){
+                $data['image'] = $brand->image;
+            }else{
+                $path = $request->file('image')->store('public/images');
+                $data['image'] = $path;
+            }
+            $brand->update($data);
+            return redirect()->route('dashboard')->with('success', 'Brand has been updated.');
+        } catch (\Throwable $th) {
+            return redirect()->route('dashboard')->with('error', 'Brand has not been updated.');
+        }
     }
 
     /**
@@ -93,8 +126,19 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brand)
+    public function destroy(Request $request): RedirectResponse
     {
         //
+        $request->validate(['id' => 'required|integer',]);
+
+        $brand = Brand::find($request->id);
+        if ($brand) {
+            $brand->cars()->delete();
+            $brand->delete();
+            return redirect()->route('dashboard')->with('success', 'Brand has been added.');
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Brand Not Found.');
+        }
+
     }
 }
