@@ -32,28 +32,26 @@ Route::get('/contact', function () {
 });
 
 
-Route::middleware('auth', 'verified', 'admin')->group(function () {
+Route::middleware(['auth','verified','admin'])->group(function () {
     Route::get(
         '/dashboard',
         function () {
             return view('dashboard.dashboard');
         }
     )->name('dashboard');
-    Route::get(
-        '/cars',
-        function () {
-            return view('dashboard.showDataTable');
-        }
-    )->name('dashboard.showCars');
+
+
     Route::get('/addCar', [CarController::class, 'create'])->name('dashboard.addCarForm');
     Route::post('/addCar', [CarController::class, 'store'])->name('dashboard.addCar');
     Route::get('/cars',[CarController::class,'index'])->name('dashboard.showCars');
+    Route::delete('/cars', [CarController::class, 'destroy'])->name('dashboard.DestoryCar');
+    Route::get('/editCar',[CarController::class,'edit'])->name('dashboard.editCarForm');
+    Route::patch('/editCar',[CarController::class,'update'])->name('dashboard.editCar');
 
     Route::get('/addBrand', [BrandController::class, 'create'])->name('dashboard.addBrandForm');
     Route::post('/addBrand', [BrandController::class, 'store'])->name('dashboard.addBrand');
     Route::get('/brands', [BrandController::class, 'index'])->name('dashboard.showBrands');
     Route::delete('/brands', [BrandController::class, 'destroy'])->name('dashboard.DestoryBrand');
-
     Route::get('/editBrand', [BrandController::class, 'edit'])->name('dashboard.editBrandForm');
     Route::patch('/editBrand', [BrandController::class, 'update'])->name('dashboard.editBrand');
 

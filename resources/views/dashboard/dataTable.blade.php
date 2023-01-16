@@ -73,7 +73,7 @@
                         <td>
                             <div class="actions">
                                 <div class="delete">
-                                    <form method="post" action="/brands">
+                                    <form method="post" action="/cars">
                                         @csrf
                                         @method('DELETE')
                                         <input type="text" name="id" id="id" value="{{ $car->id }}"
@@ -84,7 +84,7 @@
                                     </form>
                                 </div>
                                 <div class="edit">
-                                    <form method="GET" action="/editBrand">
+                                    <form method="GET" action="{{ Route('dashboard.editCarForm') }}">
                                         <input type="text" name="id" id="id" value="{{ $car->id }}"
                                             hidden>
                                         <button type="submit">

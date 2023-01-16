@@ -91,9 +91,17 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function edit(Car $car)
+    public function edit(Request $request) : View | RedirectResponse
     {
         //
+        $request->validate(['id'=>'required|integer']);
+        $car = Car::with('brand')->find($request->id);
+        $brands = Brand::get();
+        if($car){
+            return view('dashboard.addNew',compact('car','brands'));
+        }else{
+            return redirect()->route('dashboard')->with('error', 'Car Not Found.');
+        }
     }
 
     /**
@@ -103,9 +111,40 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Car $car)
+    public function update(Request $request):RedirectResponse
     {
         //
+        try {
+            $data = $request->validate([
+                'brand' => 'required|integer|exists:brands,id',
+                'type' => 'required|string',
+                'model' => 'required|string',
+                'year' => 'required|integer',
+                'engine' => 'required|string',
+                'power' => 'required|integer',
+                'topspeed' => 'required|integer',
+                'interior' => 'required|string',
+                'transmission' => 'required|string',
+                'description' => 'required|string|max:2000',
+                'price' => 'required|numeric',
+            ]);
+
+            $car = Car::findorFail($request->id);
+
+            if(!$request->hasFile('image')){
+                $data['image'] = $car->image;
+            }else{
+                $path = $request->file('image')->store('public/images');
+                $data['image'] = $path;
+            }
+
+            $car->brand()->associate($request->brand);
+            $car->save();
+            $car->update($data);
+            return redirect()->route('dashboard')->with('success', 'Car has been updated.');
+        } catch (\Throwable $th) {
+            return redirect()->route('dashboard')->with('error', 'Car has not been updated.');
+        }
     }
 
     /**
@@ -114,8 +153,17 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Car $car)
+    public function destroy(Request $request):RedirectResponse
     {
         //
+        $request->validate(['id' => 'required|integer']);
+
+        $car = Car::find($request->id);
+        if($car){
+            $car->delete();
+            return redirect()->route('dashboard')->with('success','Car has been Destroyed');
+        }else{
+            return redirect()->route('dashboard')->with('error','Car not found');
+        }
     }
 }

@@ -135,7 +135,7 @@ class BrandController extends Controller
         if ($brand) {
             $brand->cars()->delete();
             $brand->delete();
-            return redirect()->route('dashboard')->with('success', 'Brand has been added.');
+            return redirect()->route('dashboard')->with('success', 'Brand has been destroyed.');
         } else {
             return redirect()->route('dashboard')->with('error', 'Brand Not Found.');
         }
