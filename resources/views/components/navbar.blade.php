@@ -32,7 +32,13 @@
                 </div>
             @else
                 <div class="nav-button">
-                    <button class="ride-button" id="ride-button">Book Test Ride</button>
+                    @if (Auth::user() && Auth::user()->isAdmin())
+                        <a href="{{ url('/dashboard') }}">
+                            <button class="ride-button" id="dashboard-button">Dashboard</button>
+                        </a>
+                    @else
+                        <button class="ride-button" id="ride-button">Book Test Ride</button>
+                    @endif
                 </div>
             @endif
         </div>
