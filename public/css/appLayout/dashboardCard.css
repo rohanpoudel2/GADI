@@ -1,0 +1,57 @@
+.dashboard-card:first-of-type {
+  background-color: #0E1423;
+}
+
+.dashboard-card:nth-child(2) {
+  background-color: #DBBFAA;
+}
+
+.dashboard-card:last-of-type {
+  background-color: #95CED8;
+}
+
+.dashboard-card {
+  width: 300px;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 50px;
+  color: white;
+}
+
+.dashboard-card .title h1 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.dashboard-card .data h1 {
+  font-size: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+.dashboard-card .recentActivity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.dashboard-card .recentActivity .left,
+.dashboard-card .recentActivity .right {
+  background-color: white;
+  border-radius: 50px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.left {
+  color: green;
+}
+
+.right {
+  color: red;
+}

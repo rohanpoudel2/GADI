@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Car;
+use App\Providers\CountServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -161,7 +162,10 @@ class CarController extends Controller
 
         $car = Car::find($request->id);
         if($car){
+            $beforeDeletionCount = CountServiceProvider::getCurrentCarCount();
             $car->delete();
+            $currentCount = Car::get()->count();
+            CountServiceProvider::setRecentlyDeletedCar($beforeDeletionCount-$currentCount);
             return redirect()->route('dashboard')->with('success','Car has been Destroyed');
         }else{
             return redirect()->route('dashboard')->with('error','Car not found');

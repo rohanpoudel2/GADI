@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Providers\CountServiceProvider;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use PhpParser\Node\Stmt\TryCatch;
+use App\Models\Car;
 
 class BrandController extends Controller
 {
@@ -133,8 +135,14 @@ class BrandController extends Controller
 
         $brand = Brand::find($request->id);
         if ($brand) {
+            $beforeDeletionBrandCount = CountServiceProvider::getCurrentBrandCount();
+            $beforeDeletionCarCount = CountServiceProvider::getCurrentCarCount();
             $brand->cars()->delete();
+            $currentCarCount = Car::get()->count();
+            CountServiceProvider::setRecentlyDeletedCar($beforeDeletionCarCount - $currentCarCount);
             $brand->delete();
+            $currentBrandCount = Brand::get()->count();
+            CountServiceProvider::setRecentlyDeletedBrand($beforeDeletionBrandCount - $currentBrandCount);
             return redirect()->route('dashboard')->with('success', 'Brand has been destroyed.');
         } else {
             return redirect()->route('dashboard')->with('error', 'Brand Not Found.');

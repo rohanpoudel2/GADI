@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -33,13 +34,7 @@ Route::get('/contact', function () {
 
 
 Route::middleware(['auth','verified','admin'])->group(function () {
-    Route::get(
-        '/dashboard',
-        function () {
-            return view('dashboard.dashboard');
-        }
-    )->name('dashboard');
-
+    Route::get('/dashboard',[DashboardController::class, 'stats'])->name('dashboard');
 
     Route::get('/addCar', [CarController::class, 'create'])->name('dashboard.addCarForm');
     Route::post('/addCar', [CarController::class, 'store'])->name('dashboard.addCar');

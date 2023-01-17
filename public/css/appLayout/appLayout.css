@@ -3,6 +3,7 @@
 @import './profilePage.css';
 @import './showCars.css';
 @import './addNew.css';
+@import './dashboardCard.css';
 
 .actions {
   display: flex;
