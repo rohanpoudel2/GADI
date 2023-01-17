@@ -31,7 +31,7 @@ class CountServiceProvider extends ServiceProvider
 
   public static function getRecentlyAddedCar(){
     if(!self::$recentlyAddedCars){
-      self::$recentlyAddedCars = Car::where('created_at', '>=', Carbon::now()->subDays(30))->count();
+      self::$recentlyAddedCars = Car::where('created_at', '>=', Carbon::now()->subDays(5))->count();
     }
     return self::$recentlyAddedCars;
   }
@@ -60,7 +60,7 @@ class CountServiceProvider extends ServiceProvider
 
   public static function getRecentlyAddedBrand(){
     if(!self::$recentlyAddedBrands){
-      self::$recentlyAddedBrands = Brand::where('created_at','>=', Carbon::now()->subDays(30))->count();
+      self::$recentlyAddedBrands = Brand::where('created_at','>=', Carbon::now()->subDays(5))->count();
     }
     return self::$recentlyAddedBrands;
   }

@@ -147,5 +147,9 @@
             </tbody>
         </table>
     @endif
-</div>
+    @if (session()->has('error'))
+        <div class="alert alert-error">
+            <p>{{ session()->get('error') }}</p>
+        </div>
+    @endif
 </div>

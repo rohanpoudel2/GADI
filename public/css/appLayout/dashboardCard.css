@@ -48,10 +48,10 @@
   font-weight: bold;
 }
 
-.left {
+.dashboard-card .left {
   color: green;
 }
 
-.right {
+.dashboard-card .right {
   color: red;
 }

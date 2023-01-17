@@ -8,7 +8,6 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use PhpParser\Node\Stmt\TryCatch;
 use App\Models\Car;
 
 class BrandController extends Controller
@@ -20,9 +19,14 @@ class BrandController extends Controller
      */
     public function index(): View
     {
-        //
-        $brands = Brand::get();
-        return view('dashboard.showDataTable', compact('brands'));
+        try {
+            $brands = Brand::get();
+            return view('dashboard.showDataTable', compact('brands'));
+        } catch (\Throwable $th) {
+            session()->flash('error',$th->getMessage());
+            return view('dashboard.showDataTable',compact('brands'));
+        }
+      
     }
 
     /**
@@ -42,20 +46,22 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request):RedirectResponse
     {
-        //
-        $data = $request->validate([
-            'image' => 'required|image|mimes:png,jpeg,jpg|max:2048',
-            'name' => 'required|string|max:255'
-        ]);
-
-
-        $path = $request->file('image')->store('public/images');
-        $data['image'] = $path;
-        Brand::create($data);
-
-        return redirect()->route('dashboard')->with('success', 'Brand has been added.');
+        try {
+            $data = $request->validate([
+                'image' => 'required|image|mimes:png,jpeg,jpg|max:2048',
+                'name' => 'required|string|max:255'
+            ]);
+    
+            $path = $request->file('image')->store('public/images');
+            $data['image'] = $path;
+            Brand::create($data);
+    
+            return redirect()->route('dashboard')->with('success', 'Brand has been Added');
+        } catch (\Throwable $th) {
+            return redirect()->route('dashboard')->with('error',$th->getMessage());
+        }
 
     }
 
@@ -78,16 +84,20 @@ class BrandController extends Controller
      */
     public function edit(Request $request) : View | RedirectResponse
     {
-        //
-        $request->validate(['id' => 'required|integer',]);
+        try {
+            $request->validate(['id' => 'required|integer',]);
 
         $brand = Brand::find($request->id);
 
         if ($brand) {
             return view('dashboard.addNew',compact('brand'));
         } else {
-            return redirect()->route('dashboard')->with('error', 'Brand Not Found.');
+            return redirect()->route('dashboard')->with('error', 'Brand Not Found');
         }
+        } catch (\Throwable $th) {
+            return redirect()->route('dashboard')->with('error', $th->getMessage());
+        }
+       
     }
 
     /**
@@ -118,7 +128,7 @@ class BrandController extends Controller
             $brand->update($data);
             return redirect()->route('dashboard')->with('success', 'Brand has been updated.');
         } catch (\Throwable $th) {
-            return redirect()->route('dashboard')->with('error', 'Brand has not been updated.');
+            return redirect()->route('dashboard')->with('error', $th->getMessage());
         }
     }
 
@@ -130,8 +140,8 @@ class BrandController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        //
-        $request->validate(['id' => 'required|integer',]);
+        try {
+            $request->validate(['id' => 'required|integer',]);
 
         $brand = Brand::find($request->id);
         if ($brand) {
@@ -145,8 +155,12 @@ class BrandController extends Controller
             CountServiceProvider::setRecentlyDeletedBrand($beforeDeletionBrandCount - $currentBrandCount);
             return redirect()->route('dashboard')->with('success', 'Brand has been destroyed.');
         } else {
-            return redirect()->route('dashboard')->with('error', 'Brand Not Found.');
+            return redirect()->route('dashboard')->with('error', 'Brand Not Found');
         }
+        } catch (\Throwable $th) {
+            return redirect()->route('dashboard')->with('error', $th->getMessage());
+        }
+       
 
     }
 }
