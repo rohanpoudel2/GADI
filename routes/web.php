@@ -18,19 +18,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
-Route::get('/shop', [CarController::class, 'index'])->name('cars.show');
+    Route::get('/', function () {
+        return view('home');
+    });
 
-Route::get('/shop/product/{id}', function () {
-    return view('product');
-});
+    Route::get('/shop', [CarController::class, 'index'])->name('cars.show');
+    
+    Route::get('/shop/product/{id}', function () {
+        return view('product');
+    });
+    
+    Route::get('/contact', function () {
+        return view('contact');
+    });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+
 
 
 Route::middleware(['auth','verified','admin'])->group(function () {

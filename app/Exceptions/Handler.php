@@ -51,7 +51,7 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $exception){
         if($exception instanceof QueryException){
-            return redirect()->route('customerrorpage')->with('error', 'Sorry, we are currently having some technical difficulties. Please try again in a moment.');
+            return response()->view('errors.500',[],500);
         }
         return parent::render($request,$exception);
     }

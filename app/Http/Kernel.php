@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckDatabaseConnection;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -16,6 +17,7 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
             // \App\Http\Middleware\TrustHosts::class,
+        CheckDatabaseConnection::class,
             \App\Http\Middleware\TrustProxies::class,
             \Illuminate\Http\Middleware\HandleCors::class,
             \App\Http\Middleware\PreventRequestsDuringMaintenance::class,

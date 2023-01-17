@@ -14,25 +14,18 @@
                 @if (Route::has('login'))
                     <div class="hidden">
                         @auth
-                            @if (Auth::user()->isAdmin())
-                                <div class="social">
-                                    <a href="{{ url('/dashboard') }}"
-                                        class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                                </div>
-                            @else
-                                <div class="social">
-                                    <form method="POST" action="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                                        @csrf
-                                        <a href="{{ route('logout') }}"
-                                            class="text-sm text-gray-700 dark:text-gray-500 underline">
-                                            <i class="fa-solid fa-right-from-bracket"></i>
-                                            Logout
-                                        </a>
-                                    </form>
-                                </div>
-                            @endif
+                            <div class="social">
+                                <form method="POST" action="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                                    @csrf
+                                    <a href="{{ route('logout') }}"
+                                        class="text-sm text-gray-700 dark:text-gray-500 underline">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                        Logout
+                                    </a>
+                                </form>
+                            </div>
                         @else
                             <div class="social">
                                 <a href="{{ route('login') }}"
