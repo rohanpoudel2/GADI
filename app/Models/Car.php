@@ -28,4 +28,9 @@ class Car extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
+    public function featuredproduct()
+    {
+        return $this->hasOne(FeaturedProduct::class);
+    }
 }

@@ -7,6 +7,7 @@
                 <h1>
                     Sorry, our servers are currently experiencing some technical difficulties. Please try again later.
                 </h1>
+                <span>500 | Internal Server Error</span>
             </div>
         </div>
     </div>

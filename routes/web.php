@@ -3,7 +3,9 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeaturedProductController;
 use App\Http\Controllers\ProfileController;
+use App\Models\FeaturedProduct;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -18,33 +20,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [FeaturedProductController::class, 'index'])->name('featured.car');
 
-    Route::get('/', function () {
-        return view('home');
-    });
+Route::get('/shop', [CarController::class, 'index'])->name('cars.show');
 
-    Route::get('/shop', [CarController::class, 'index'])->name('cars.show');
-    
-    Route::get('/shop/product/{id}', function () {
-        return view('product');
-    });
-    
-    Route::get('/contact', function () {
-        return view('contact');
-    });
+Route::get('/shop/product/{id}', function () {
+    return view('product');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
 
 
 
 
-Route::middleware(['auth','verified','admin'])->group(function () {
-    Route::get('/dashboard',[DashboardController::class, 'stats'])->name('dashboard');
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'stats'])->name('dashboard');
+    Route::post('/dashboard', [FeaturedProductController::class, 'store'])->name('dashboard.addFeatured');
 
     Route::get('/addCar', [CarController::class, 'create'])->name('dashboard.addCarForm');
     Route::post('/addCar', [CarController::class, 'store'])->name('dashboard.addCar');
-    Route::get('/cars',[CarController::class,'index'])->name('dashboard.showCars');
+    Route::get('/cars', [CarController::class, 'index'])->name('dashboard.showCars');
     Route::delete('/cars', [CarController::class, 'destroy'])->name('dashboard.DestoryCar');
-    Route::get('/editCar',[CarController::class,'edit'])->name('dashboard.editCarForm');
-    Route::patch('/editCar',[CarController::class,'update'])->name('dashboard.editCar');
+    Route::get('/editCar', [CarController::class, 'edit'])->name('dashboard.editCarForm');
+    Route::patch('/editCar', [CarController::class, 'update'])->name('dashboard.editCar');
 
     Route::get('/addBrand', [BrandController::class, 'create'])->name('dashboard.addBrandForm');
     Route::post('/addBrand', [BrandController::class, 'store'])->name('dashboard.addBrand');

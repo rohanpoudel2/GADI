@@ -20,17 +20,14 @@ class CarController extends Controller
     public function index(Request $request): View
     {
         //
-        if($request->route()->getName() == "dashboard.showCars")
-        {
+        if ($request->route()->getName() == "dashboard.showCars") {
             $cars = Car::with('brand')->get();
-            return view('dashboard.showDataTable',compact('cars'));
-        }
-        else
-        {
+            return view('dashboard.showDataTable', compact('cars'));
+        } else {
             $cars = Car::with('brand')->paginate(5);
             return view('shop', compact('cars'));
         }
-       
+
     }
 
     /**
@@ -41,7 +38,7 @@ class CarController extends Controller
     public function create(): View
     {
         $brands = Brand::get();
-        return view('dashboard.addNew',compact('brands'));
+        return view('dashboard.addNew', compact('brands'));
         //
     }
 
@@ -53,7 +50,7 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $data = $request->validate([
             'brand' => 'required|integer|exists:brands,id',
             'type' => 'required|string',
@@ -69,7 +66,7 @@ class CarController extends Controller
         ]);
 
         $path = $request->file('image')->store('public/images');
-        $data['image']=$path;
+        $data['image'] = $path;
         $brand = Brand::findOrFail($data['brand']);
         $car = $brand->cars()->create($data);
 
@@ -93,15 +90,15 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request) : View | RedirectResponse
+    public function edit(Request $request): View|RedirectResponse
     {
         //
-        $request->validate(['id'=>'required|integer']);
+        $request->validate(['id' => 'required|integer']);
         $car = Car::with('brand')->find($request->id);
         $brands = Brand::get();
-        if($car){
-            return view('dashboard.addNew',compact('car','brands'));
-        }else{
+        if ($car) {
+            return view('dashboard.addNew', compact('car', 'brands'));
+        } else {
             return redirect()->route('dashboard')->with('error', 'Car Not Found.');
         }
     }
@@ -113,7 +110,7 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request):RedirectResponse
+    public function update(Request $request): RedirectResponse
     {
         //
         try {
@@ -133,9 +130,9 @@ class CarController extends Controller
 
             $car = Car::findorFail($request->id);
 
-            if(!$request->hasFile('image')){
+            if (!$request->hasFile('image')) {
                 $data['image'] = $car->image;
-            }else{
+            } else {
                 $path = $request->file('image')->store('public/images');
                 $data['image'] = $path;
             }
@@ -155,20 +152,17 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request):RedirectResponse
+    public function destroy(Request $request): RedirectResponse
     {
         //
         $request->validate(['id' => 'required|integer']);
 
         $car = Car::find($request->id);
-        if($car){
-            $beforeDeletionCount = CountServiceProvider::getCurrentCarCount();
+        if ($car) {
             $car->delete();
-            $currentCount = Car::get()->count();
-            CountServiceProvider::setRecentlyDeletedCar($beforeDeletionCount-$currentCount);
-            return redirect()->route('dashboard')->with('success','Car has been Destroyed');
-        }else{
-            return redirect()->route('dashboard')->with('error','Car not found');
+            return redirect()->route('dashboard')->with('success', 'Car has been Destroyed');
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Car not found');
         }
     }
 }

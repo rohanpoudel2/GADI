@@ -4,24 +4,18 @@
             {{ $error }}
         @endif
         <div class="dashboard-cards">
-            @component('dashboard.dashboardCards')
+            @component('dashboard.dashboardCards', ['cars' => $cars])
                 @slot('carCount')
                     {{ $carCount }}
                 @endslot
                 @slot('recentylAddedCar')
                     {{ $recentlyAddedCar }}
                 @endslot
-                @slot('recentlyDeletedCar')
-                    {{ $recentlyDeletedCar }}
-                @endslot
                 @slot('brandCount')
                     {{ $brandCount }}
                 @endslot
                 @slot('recentylAddedBrand')
                     {{ $recentlyAddedBrand }}
-                @endslot
-                @slot('recentlyDeletedBrand')
-                    {{ $recentlyDeletedBrand }}
                 @endslot
                 @slot('normalUserCount')
                     {{ $normalUser }}
@@ -31,6 +25,10 @@
         @if (session()->has('success'))
             <div class="alert alert-success">
                 <p>{{ session('success') }}</p>
+            </div>
+        @elseif(session()->has('error'))
+            <div class="alert alert-error">
+                <p>{{ session('error') }}</p>
             </div>
         @endif
     </div>

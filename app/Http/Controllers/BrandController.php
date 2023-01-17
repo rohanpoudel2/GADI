@@ -23,10 +23,10 @@ class BrandController extends Controller
             $brands = Brand::get();
             return view('dashboard.showDataTable', compact('brands'));
         } catch (\Throwable $th) {
-            session()->flash('error',$th->getMessage());
-            return view('dashboard.showDataTable',compact('brands'));
+            session()->flash('error', $th->getMessage());
+            return view('dashboard.showDataTable', compact('brands'));
         }
-      
+
     }
 
     /**
@@ -46,21 +46,21 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request):RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         try {
             $data = $request->validate([
                 'image' => 'required|image|mimes:png,jpeg,jpg|max:2048',
                 'name' => 'required|string|max:255'
             ]);
-    
+
             $path = $request->file('image')->store('public/images');
             $data['image'] = $path;
             Brand::create($data);
-    
+
             return redirect()->route('dashboard')->with('success', 'Brand has been Added');
         } catch (\Throwable $th) {
-            return redirect()->route('dashboard')->with('error',$th->getMessage());
+            return redirect()->route('dashboard')->with('error', $th->getMessage());
         }
 
     }
@@ -82,22 +82,22 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request) : View | RedirectResponse
+    public function edit(Request $request): View|RedirectResponse
     {
         try {
             $request->validate(['id' => 'required|integer',]);
 
-        $brand = Brand::find($request->id);
+            $brand = Brand::find($request->id);
 
-        if ($brand) {
-            return view('dashboard.addNew',compact('brand'));
-        } else {
-            return redirect()->route('dashboard')->with('error', 'Brand Not Found');
-        }
+            if ($brand) {
+                return view('dashboard.addNew', compact('brand'));
+            } else {
+                return redirect()->route('dashboard')->with('error', 'Brand Not Found');
+            }
         } catch (\Throwable $th) {
             return redirect()->route('dashboard')->with('error', $th->getMessage());
         }
-       
+
     }
 
     /**
@@ -107,11 +107,11 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request):RedirectResponse
+    public function update(Request $request): RedirectResponse
     {
         //
         try {
-            
+
             $data = $request->validate([
                 'id' => 'required|integer',
                 'image' => 'image|mimes:png,jpeg,jpg|max:2048',
@@ -119,9 +119,9 @@ class BrandController extends Controller
             ]);
             $brand = Brand::findorFail($request->id);
 
-            if(!$request->hasFile('image')){
+            if (!$request->hasFile('image')) {
                 $data['image'] = $brand->image;
-            }else{
+            } else {
                 $path = $request->file('image')->store('public/images');
                 $data['image'] = $path;
             }
@@ -143,24 +143,18 @@ class BrandController extends Controller
         try {
             $request->validate(['id' => 'required|integer',]);
 
-        $brand = Brand::find($request->id);
-        if ($brand) {
-            $beforeDeletionBrandCount = CountServiceProvider::getCurrentBrandCount();
-            $beforeDeletionCarCount = CountServiceProvider::getCurrentCarCount();
-            $brand->cars()->delete();
-            $currentCarCount = Car::get()->count();
-            CountServiceProvider::setRecentlyDeletedCar($beforeDeletionCarCount - $currentCarCount);
-            $brand->delete();
-            $currentBrandCount = Brand::get()->count();
-            CountServiceProvider::setRecentlyDeletedBrand($beforeDeletionBrandCount - $currentBrandCount);
-            return redirect()->route('dashboard')->with('success', 'Brand has been destroyed.');
-        } else {
-            return redirect()->route('dashboard')->with('error', 'Brand Not Found');
-        }
+            $brand = Brand::find($request->id);
+            if ($brand) {
+                $brand->cars()->delete();
+                $brand->delete();
+                return redirect()->route('dashboard')->with('success', 'Brand has been destroyed.');
+            } else {
+                return redirect()->route('dashboard')->with('error', 'Brand Not Found');
+            }
         } catch (\Throwable $th) {
             return redirect()->route('dashboard')->with('error', $th->getMessage());
         }
-       
+
 
     }
 }

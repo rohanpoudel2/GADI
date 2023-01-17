@@ -2,23 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FeaturedProduct;
+use App\Models\Car;
 use Illuminate\View\View;
 use App\Providers\CountServiceProvider;
 
 class DashboardController extends Controller
 {
-  public function stats():View
+  public function stats(): View
   {
-    $carCount= CountServiceProvider::getCurrentCarCount();
+    $carCount = CountServiceProvider::getCurrentCarCount();
     $recentlyAddedCar = CountServiceProvider::getRecentlyAddedCar();
-    $recentlyDeletedCar = CountServiceProvider::getRecentlyDeletedCar();
 
     $brandCount = CountServiceProvider::getCurrentBrandCount();
     $recentlyAddedBrand = CountServiceProvider::getRecentlyAddedBrand();
-    $recentlyDeletedBrand = CountServiceProvider::getRecentlyDeletedBrand();
-    
+
     $normalUser = CountServiceProvider::getNormalUserCount();
 
-    return View('dashboard.dashboard',compact('carCount','recentlyAddedCar','recentlyDeletedCar','brandCount','recentlyAddedBrand','recentlyDeletedBrand','normalUser'));
+    $featuredProductCount = CountServiceProvider::getFeaturedProductCount();
+
+    $cars = Car::with('brand')->get();
+
+    if ($featuredProductCount != 0) {
+      $featuredProduct = FeaturedProduct::with('car')->get();
+      return View('dashboard.dashboard', compact('carCount', 'recentlyAddedCar', 'brandCount', 'recentlyAddedBrand', 'normalUser', 'featuredProduct', 'cars'));
+    } else {
+      return View('dashboard.dashboard', compact('carCount', 'recentlyAddedCar', 'brandCount', 'recentlyAddedBrand', 'normalUser', 'cars'));
+    }
+
   }
 }

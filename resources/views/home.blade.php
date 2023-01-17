@@ -16,6 +16,15 @@
     @endcomponent
     @component('components.benefits')
     @endcomponent
-    @component('components.featured')
-    @endcomponent
+    @if (isset($featured))
+        @component('components.featured')
+        @endcomponent
+    @else
+        <div class="container">
+            <div class="no-featured">
+                <h1 style="text-align: center; border-bottom: 1px solid gray; border-top: 1px solid gray">No Featured
+                    Products to show</h1>
+            </div>
+        </div>
+    @endif
 </x-layout>

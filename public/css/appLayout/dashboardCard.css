@@ -6,8 +6,14 @@
   background-color: #DBBFAA;
 }
 
-.dashboard-card:last-of-type {
+.dashboard-card:nth-child(3) {
   background-color: #95CED8;
+}
+
+.dashboard-card:nth-child(4) {
+  background-color: #019362;
+  width: 100%;
+  height: fit-content;
 }
 
 .dashboard-card {
@@ -36,12 +42,11 @@
 .dashboard-card .recentActivity {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 10px;
 }
 
-.dashboard-card .recentActivity .left,
-.dashboard-card .recentActivity .right {
+.dashboard-card .recentActivity .left {
   background-color: white;
   border-radius: 50px;
   padding: 10px;
@@ -52,6 +57,47 @@
   color: green;
 }
 
-.dashboard-card .right {
-  color: red;
+.dashboard-card .data-featured .topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  background-color: white;
+  color: var(--heading-font-color);
+  border-radius: 50px;
+  padding: 20px;
+}
+
+.dashboard-card .data-featured .no-featured-product {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.dashboard-card .data-featured .add-product-button {
+  background-color: var(--primary-color);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.dashboard-card form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.dashboard-card form h3 {
+  font-size: 22px;
+}
+
+.dashboard-card form button {
+  background-color: var(--primary-color);
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.dashboard-card form input {
+  margin: 20px 0px;
 }
