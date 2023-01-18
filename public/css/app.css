@@ -6,6 +6,8 @@
 @import "./benefits.css";
 @import "./featured.css";
 @import "./newsLetter.css";
+@import "./wishList.css";
+@import "./wishListCard.css";
 @import "./footer.css";
 @import "./cards.css";
 @import "./card.css";
@@ -13,7 +15,6 @@
 @import "./colorPicker.css";
 @import './colorCard.css';
 @import './productConfirmation.css';
-@import './contact.css';
 @import './guestLogin.css';
 @import './appLayout/appLayout.css';
 @import './customErrorPage.css';

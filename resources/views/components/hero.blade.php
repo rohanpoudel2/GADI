@@ -13,7 +13,9 @@
                     {{ $desc }}
                 </div>
                 <div class="right">
-                    <button class="book-button">Book Now</button>
+                    <a href="/shop">
+                        <button class="book-button">View Options</button>
+                    </a>
                 </div>
             @endif
         </div>

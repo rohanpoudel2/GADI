@@ -24,15 +24,13 @@ Route::get('/', [FeaturedProductController::class, 'index'])->name('featured.car
 
 Route::get('/shop', [CarController::class, 'index'])->name('cars.show');
 
+Route::get('/wishlist', function () {
+    return view('wishList');
+});
+
 Route::get('/shop/product/{id}', function () {
     return view('product');
 });
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-
 
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {

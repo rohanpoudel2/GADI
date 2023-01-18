@@ -14,7 +14,7 @@
                 <div class="nav-links">
                     <span class="nav-link"><a href="/">Home</a></span>
                     <span class="nav-link"><a href="/shop">Shop</a></span>
-                    <span class="nav-link"><a href="/contact">Contact</a></span>
+                    <span class="nav-link"><a href="/wishlist">WishList</a></span>
                 </div>
             </div>
         @endif

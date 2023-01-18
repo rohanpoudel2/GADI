@@ -1,0 +1,52 @@
+.wishlist-card {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid gray;
+  margin-bottom: 10px;
+}
+
+.wishlist-card .car-image {
+  width: 200px;
+}
+
+.wishlist-card .car-image img {
+  width: 100%;
+}
+
+.wishlist-card .car-details {
+  margin-left: 50px;
+}
+
+.wishlist-card .car-details .car-name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.wishlist-card .car-details .car-price {
+  font-weight: 200;
+}
+
+.wishlist-card .buttons {
+  position: absolute;
+  right: 0;
+  display: flex;
+  color: white;
+}
+
+.wishlist-card .buttons .buy-button,
+.wishlist-card .buttons .delete-button {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.wishlist-card .buttons .buy-button {
+  margin-right: 10px;
+  background-color: green;
+}
+
+.wishlist-card .buttons .delete-button {
+  background-color: red;
+}

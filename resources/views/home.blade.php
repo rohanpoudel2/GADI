@@ -17,8 +17,7 @@
     @component('components.benefits')
     @endcomponent
     @if (isset($featured))
-        @component('components.featured')
-        @endcomponent
+        @include('components.featured', ['featured' => $featured])
     @else
         <div class="container">
             <div class="no-featured">
