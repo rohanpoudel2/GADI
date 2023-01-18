@@ -24,7 +24,7 @@ class CarController extends Controller
             $cars = Car::with('brand')->get();
             return view('dashboard.showDataTable', compact('cars'));
         } else {
-            $cars = Car::with('brand')->paginate(5);
+            $cars = Car::with('brand')->paginate(10);
             return view('shop', compact('cars'));
         }
 
@@ -66,7 +66,7 @@ class CarController extends Controller
             'price' => 'required|numeric',
         ]);
 
-        $path = $request->file('image')->store('public/images');
+        $path = $request->file('image')->store('public/images/cars');
         $data['image'] = $path;
         $brand = Brand::findOrFail($data['brand']);
         $car = $brand->cars()->create($data);
@@ -134,7 +134,7 @@ class CarController extends Controller
             if (!$request->hasFile('image')) {
                 $data['image'] = $car->image;
             } else {
-                $path = $request->file('image')->store('public/images');
+                $path = $request->file('image')->store('public/images/cars');
                 $data['image'] = $path;
             }
 

@@ -54,7 +54,7 @@ class BrandController extends Controller
                 'name' => 'required|string|max:255'
             ]);
 
-            $path = $request->file('image')->store('public/images');
+            $path = $request->file('image')->store('public/images/brands');
             $data['image'] = $path;
             Brand::create($data);
 
@@ -114,7 +114,7 @@ class BrandController extends Controller
 
             $data = $request->validate([
                 'id' => 'required|integer',
-                'image' => 'image|mimes:png,jpeg,jpg|max:2048',
+                'image' => 'image|mimes:png,jpeg,jpg,webp|max:2048',
                 'name' => 'required|string|max:255'
             ]);
             $brand = Brand::findorFail($request->id);
@@ -122,7 +122,7 @@ class BrandController extends Controller
             if (!$request->hasFile('image')) {
                 $data['image'] = $brand->image;
             } else {
-                $path = $request->file('image')->store('public/images');
+                $path = $request->file('image')->store('public/images/brands');
                 $data['image'] = $path;
             }
             $brand->update($data);
