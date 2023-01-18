@@ -81,7 +81,7 @@ nav .login-link:first-of-type {
   border: 5px solid var(--primary-color);
   border-radius: 50px;
   width: 800px;
-  height: 400px;
+  height: fit-content;
   box-shadow: -1px 1px 5px 6px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: -1px 1px 5px 6px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: -1px 1px 5px 6px rgba(0, 0, 0, 0.15);
@@ -92,6 +92,11 @@ nav .login-link:first-of-type {
   flex-direction: column;
   justify-content: center;
   margin-top: 50px;
+}
+
+.test-ride-form form input {
+  border: 1px solid gray;
+  border-radius: 10px;
 }
 
 .test-ride-form form .form-item {
@@ -114,11 +119,12 @@ nav .login-link:first-of-type {
 
 .test-ride-form .quit-form {
   position: absolute;
+  top: 10px;
   right: 20px;
   font-size: 23px;
   background-color: lightsalmon;
-  padding: 20px;
-  border-radius: 50px;
+  padding: 10px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,3 +133,5 @@ nav .login-link:first-of-type {
 .test-ride-form form input {
   padding: 10px 5px;
 }
+
+.test-ride-form span {}

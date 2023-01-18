@@ -3,7 +3,6 @@
     $isRegister = Request::is('register');
     $isForgot = Request::is('forgot-password');
 @endphp
-
 <nav>
     <div class="nav-items">
         <div class="left">
@@ -47,6 +46,10 @@
 
 
 @php
+    $options = '';
+    foreach ($cars as $car) {
+        $options .= '<option value="' . $car->id . '">' . $car->brand->name . ' ' . $car->model . '</option>';
+    }
     $formFields = [
         '
         <div class="form-item">
@@ -67,9 +70,9 @@
             <label for="message">Select the car you want to test ride:</label>
             
             <select name="selected-car" id="selected-car" required>
-                <option value="BMW M4 CSL">BMW M3 CSL</option>
-                <option value="BMW M4 CSL">BMW M4 CSL</option>
-                <option value="BMW M4 CSL">BMW M8 CSL</option>
+                ' .
+        $options .
+        '
             </select>
         </div>
         ',
@@ -80,15 +83,20 @@
     <button class="quit-form" id="quit-form">
         <i class="fa-solid fa-xmark"></i>
     </button>
-    @component('components.form', ['formFields' => $formFields])
-        @slot('action')
-            /test-form
-        @endslot
-        @slot('method')
-            POST
-        @endslot
-        @slot('submitText')
-            Book Test Ride
-        @endslot
-    @endcomponent
+    @if (Auth::user())
+        @component('components.form', ['formFields' => $formFields])
+            @slot('action')
+                /test-form
+            @endslot
+            @slot('method')
+                POST
+            @endslot
+            @slot('submitText')
+                Book Test Ride
+            @endslot
+        @endcomponent
+    @else
+        <span>Please Login or Create an account to book a test ride.</span>
+    @endif
+
 </div>

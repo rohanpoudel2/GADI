@@ -15,7 +15,7 @@
 
 <body>
     <div class="container">
-        @include('components.navbar')
+        @include('components.navbar', ['cars' => $cars])
     </div>
     {{ $slot }}
     @if (!isset($dontshow))
