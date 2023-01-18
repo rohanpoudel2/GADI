@@ -61,11 +61,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
   background-color: white;
   color: var(--heading-font-color);
   border-radius: 50px;
   padding: 20px;
+}
+
+.dashboard-card .data-featured .topbar form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
 }
 
 .dashboard-card .data-featured .no-featured-product {
@@ -77,6 +83,26 @@
   background-color: var(--primary-color);
   padding: 10px;
   border-radius: 10px;
+}
+
+.dashboard-card .data-featured .featured-product-image {
+  width: 300px;
+}
+
+.dashboard-card .data-featured .featured-product-image img {
+  width: 100%;
+}
+
+.dashboard-card .data-featured .featured-product-dashboard {
+  display: flex;
+  margin-top: 20px;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-card .data-featured .featured-product-dashboard .featured-product-details {
+  font-size: 42px;
 }
 
 .dashboard-card form {

@@ -38,6 +38,7 @@ Route::get('/contact', function () {
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'stats'])->name('dashboard');
     Route::post('/dashboard', [FeaturedProductController::class, 'store'])->name('dashboard.addFeatured');
+    Route::delete('/dashboard', [FeaturedProductController::class, 'destroy'])->name('dashboard.deleteFeatured');
 
     Route::get('/addCar', [CarController::class, 'create'])->name('dashboard.addCarForm');
     Route::post('/addCar', [CarController::class, 'store'])->name('dashboard.addCar');

@@ -4,32 +4,36 @@
             {{ $error }}
         @endif
         <div class="dashboard-cards">
-            @component('dashboard.dashboardCards', ['cars' => $cars])
-                @slot('carCount')
-                    {{ $carCount }}
-                @endslot
-                @slot('recentylAddedCar')
-                    {{ $recentlyAddedCar }}
-                @endslot
-                @slot('brandCount')
-                    {{ $brandCount }}
-                @endslot
-                @slot('recentylAddedBrand')
-                    {{ $recentlyAddedBrand }}
-                @endslot
-                @slot('normalUserCount')
-                    {{ $normalUser }}
-                @endslot
-            @endcomponent
+            @if (isset($featuredProduct))
+                @component('dashboard.dashboardCards', ['cars' => $cars, 'featuredProduct' => $featuredProduct])
+                @else
+                    @component('dashboard.dashboardCards', ['cars' => $cars])
+                    @endif
+                    @slot('carCount')
+                        {{ $carCount }}
+                    @endslot
+                    @slot('recentylAddedCar')
+                        {{ $recentlyAddedCar }}
+                    @endslot
+                    @slot('brandCount')
+                        {{ $brandCount }}
+                    @endslot
+                    @slot('recentylAddedBrand')
+                        {{ $recentlyAddedBrand }}
+                    @endslot
+                    @slot('normalUserCount')
+                        {{ $normalUser }}
+                    @endslot
+                @endcomponent
+                @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        <p>{{ session('success') }}</p>
+                    </div>
+                @elseif(session()->has('error'))
+                    <div class="alert alert-error">
+                        <p>{{ session('error') }}</p>
+                    </div>
+                @endif
+            </div>
         </div>
-        @if (session()->has('success'))
-            <div class="alert alert-success">
-                <p>{{ session('success') }}</p>
-            </div>
-        @elseif(session()->has('error'))
-            <div class="alert alert-error">
-                <p>{{ session('error') }}</p>
-            </div>
-        @endif
-    </div>
-</x-app-layout>
+    </x-app-layout>

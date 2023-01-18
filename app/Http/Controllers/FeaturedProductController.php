@@ -37,4 +37,20 @@ class FeaturedProductController extends Controller
             return redirect()->route('dashboard')->with('error', $th->getMessage());
         }
     }
+
+    public function destroy(Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'id' => 'required|integer|exists:featured_products,id'
+            ]);
+
+            FeaturedProduct::find($request->id)->delete();
+
+            return redirect()->route('dashboard')->with('success', 'Featured Product Deleted 👍🏼');
+
+        } catch (\Throwable $th) {
+            return redirect()->route('dashboard')->with('error', $th->getMessage());
+        }
+    }
 }

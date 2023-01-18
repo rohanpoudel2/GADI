@@ -23,7 +23,7 @@ class DashboardController extends Controller
 
     $cars = Car::with('brand')->get();
 
-    if ($featuredProductCount != 0) {
+    if ((string) $featuredProductCount != 0) {
       $featuredProduct = FeaturedProduct::with('car')->get();
       return View('dashboard.dashboard', compact('carCount', 'recentlyAddedCar', 'brandCount', 'recentlyAddedBrand', 'normalUser', 'featuredProduct', 'cars'));
     } else {
