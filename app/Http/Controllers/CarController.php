@@ -24,8 +24,18 @@ class CarController extends Controller
             $cars = Car::with('brand')->get();
             return view('dashboard.showDataTable', compact('cars'));
         } else {
-            $cars = Car::with('brand')->paginate(10);
-            return view('shop', compact('cars'));
+            if ($request->has('search')) {
+                $cars = Car::with('brand')->filter(request(['search']))->paginate(10);
+            } else if ($request->has('brand')) {
+                $cars = Car::with('brand')->filter(request(['brand']))->paginate(10);
+            } else if ($request->has('price') && $request->price != '') {
+                $cars = Car::with('brand')->filter(request(['price']))->paginate(10);
+            } else {
+                $cars = Car::with('brand')->paginate(10);
+            }
+            $brands = Brand::all();
+            $cars->appends(request()->input());
+            return view('shop', compact('cars', 'brands'));
         }
 
     }

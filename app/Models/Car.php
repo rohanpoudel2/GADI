@@ -24,6 +24,21 @@ class Car extends Model
         'price'
     ];
 
+    public function scopeFilter($query, array $filters)
+    {
+        if ($filters['search'] ?? false) {
+            $query
+                ->where('model', 'like', '%' . request('search') . '%')
+                ->orWhere('description', 'like', '%' . request('search') . '%');
+        } else if ($filters['brand'] ?? false) {
+            $query
+                ->where('brand_id', 'like', '%' . request('brand') . '%');
+        } else if ($filters['price'] ?? false) {
+            $query
+                ->where('price', '<=', request('price'));
+        }
+    }
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);
