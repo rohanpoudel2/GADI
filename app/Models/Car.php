@@ -33,4 +33,9 @@ class Car extends Model
     {
         return $this->hasOne(FeaturedProduct::class);
     }
+
+    public function testride()
+    {
+        return $this->hasMany(TestRide::class);
+    }
 }

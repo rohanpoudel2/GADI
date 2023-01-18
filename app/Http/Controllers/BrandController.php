@@ -50,7 +50,7 @@ class BrandController extends Controller
     {
         try {
             $data = $request->validate([
-                'image' => 'required|image|mimes:png,jpeg,jpg|max:2048',
+                'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
                 'name' => 'required|string|max:255'
             ]);
 
@@ -145,7 +145,6 @@ class BrandController extends Controller
 
             $brand = Brand::find($request->id);
             if ($brand) {
-                $brand->cars()->delete();
                 $brand->delete();
                 return redirect()->route('dashboard')->with('success', 'Brand has been destroyed.');
             } else {

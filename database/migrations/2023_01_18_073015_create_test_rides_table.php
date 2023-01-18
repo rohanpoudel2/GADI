@@ -23,8 +23,8 @@ return new class extends Migration {
         });
 
         Schema::table('test_rides', function (Blueprint $table) {
-            $table->foreign('car_id')->references('id')->on('cars');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -21,7 +21,7 @@ return new class extends Migration {
         });
 
         Schema::table('featured_products', function (Blueprint $table) {
-            $table->foreign('car_id')->references('id')->on('cars');
+            $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
         });
     }
 

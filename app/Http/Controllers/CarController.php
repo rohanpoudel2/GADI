@@ -52,6 +52,7 @@ class CarController extends Controller
     {
 
         $data = $request->validate([
+            'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
             'brand' => 'required|integer|exists:brands,id',
             'type' => 'required|string',
             'model' => 'required|string',

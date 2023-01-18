@@ -31,7 +31,7 @@ return new class extends Migration {
         });
 
         Schema::table('cars', function (Blueprint $table) {
-            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
         });
     }
 
