@@ -13,28 +13,34 @@
                 <h1>We Offer Massive Selection of Cars</h1>
             </div>
             <div class="cards">
-                @foreach ($cars as $car)
-                    @component('components.card')
-                        @slot('name')
-                            {{ $car->brand->name . ' ' . $car->model }}
-                        @endslot
-                        @slot('power')
-                            {{ $car->power }}
-                        @endslot
-                        @slot('engine')
-                            {{ $car->engine }}
-                        @endslot
-                        @slot('price')
-                            {{ $car->price }}
-                        @endslot
-                        @slot('topspeed')
-                            {{ $car->topspeed }}
-                        @endslot
-                        @slot('image')
-                            {{ $car->image }}
-                        @endslot
-                    @endcomponent
-                @endforeach
+                @if ($cars->isEmpty())
+                    No Cars Found
+                @else
+                    @foreach ($cars as $car)
+                        @component('components.card')
+                            @slot('name')
+                                {{ $car->brand->name . ' ' . $car->model }}
+                            @endslot
+                            @slot('power')
+                                {{ $car->power }}
+                            @endslot
+                            @slot('engine')
+                                {{ $car->engine }}
+                            @endslot
+                            @slot('price')
+                                {{ $car->price }}
+                            @endslot
+                            @slot('topspeed')
+                                {{ $car->topspeed }}
+                            @endslot
+                            @slot('image')
+                                {{ $car->image }}
+                            @endslot
+                        @endcomponent
+                    @endforeach
+                @endif
+
+
             </div>
             {{ $cars->links() }}
         </div>

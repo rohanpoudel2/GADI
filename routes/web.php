@@ -5,6 +5,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeaturedProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestRideController;
 use App\Models\FeaturedProduct;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,7 @@ Route::get('/shop/product/{id}', function () {
     return view('product');
 });
 
+Route::post('/addTestRide', [TestRideController::class, 'store'])->middleware('auth')->name('add.TestRide');
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'stats'])->name('dashboard');

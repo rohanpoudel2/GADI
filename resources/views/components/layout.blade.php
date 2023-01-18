@@ -15,7 +15,11 @@
 
 <body>
     <div class="container">
-        @include('components.navbar', ['cars' => $cars])
+        @if (isset($cars))
+            @include('components.navbar', ['cars' => $cars])
+        @else
+            @include('components.navbar')
+        @endif
     </div>
     {{ $slot }}
     @if (!isset($dontshow))

@@ -27,8 +27,13 @@ class CarServiceProvider extends ServiceProvider
     {
         //
         View::composer('components.layout', function ($view) {
-            $cars = Car::with('brand')->get();
-            $view->with('cars', $cars);
+            $carCount = CountServiceProvider::getCurrentCarCount();
+            if ($carCount == 0) {
+                $view;
+            } else {
+                $cars = Car::with('brand')->get();
+                $view->with('cars', $cars);
+            }
         });
     }
 }

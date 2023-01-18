@@ -47,36 +47,49 @@
 
 @php
     $options = '';
-    foreach ($cars as $car) {
-        $options .= '<option value="' . $car->id . '">' . $car->brand->name . ' ' . $car->model . '</option>';
+    if (isset($cars)) {
+        foreach ($cars as $car) {
+            $options .= '<option value="' . $car->id . '">' . $car->brand->name . ' ' . $car->model . '</option>';
+        }
+    } else {
+        $options .= '<option value="">NO CARS AVAILABLE</option>';
     }
-    $formFields = [
-        '
+    if (Auth::user()) {
+        $formFields = [
+            '
         <div class="form-item">
+            <input type="text" name="user_id" id="user_id" value=' .
+            Auth::user()->id .
+            ' required hidden/>
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" required>
+            <input type="text" name="name" id="name" value=' .
+            Auth::user()->name .
+            ' required>
         </div>
         ',
     
-        '
+            '
         <div class="form-item">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" required>
+            <input type="email" name="email" id="email" value=' .
+            Auth::user()->email .
+            ' required>
         </div>
         ',
-    
-        '
+            '
         <div class="form-item">
             <label for="message">Select the car you want to test ride:</label>
             
-            <select name="selected-car" id="selected-car" required>
+            <select name="car_id" id="car_id" required>
                 ' .
-        $options .
-        '
+            $options .
+            '
             </select>
         </div>
         ',
-    ];
+        ];
+    }
+    
 @endphp
 
 <div class="test-ride-form" id="test-ride-form" style="display: none">
@@ -86,7 +99,7 @@
     @if (Auth::user())
         @component('components.form', ['formFields' => $formFields])
             @slot('action')
-                /test-form
+                /addTestRide
             @endslot
             @slot('method')
                 POST
