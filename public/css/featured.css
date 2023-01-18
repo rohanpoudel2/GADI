@@ -23,7 +23,15 @@
 }
 
 .featured-product .top .left h1 {
+  font-weight: bold;
   font-size: 45px;
+}
+
+.featured-product .top .right p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .featured-product .left img,
@@ -58,6 +66,10 @@
 
 .featured-product .right .product-specs .product-name {
   font-size: 24px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .featured-product .right .product-specs .product-spec {

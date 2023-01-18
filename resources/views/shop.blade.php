@@ -36,6 +36,9 @@
                 @else
                     @foreach ($cars as $car)
                         @component('components.card')
+                            @slot('id')
+                                {{ $car->id }}
+                            @endslot
                             @slot('name')
                                 {{ $car->brand->name . ' ' . $car->model }}
                             @endslot

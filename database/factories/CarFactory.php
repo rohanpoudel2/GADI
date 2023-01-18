@@ -38,7 +38,7 @@ class CarFactory extends Factory
             'topspeed' => $this->faker->randomNumber(3),
             'interior' => $this->faker->randomElement(['Leather', 'Cloth', 'Carbon']),
             'transmission' => $this->faker->randomElement(['Automatic', 'Manual']),
-            'description' => $this->faker->sentence(10),
+            'description' => $this->faker->sentence(500),
             'price' => $this->faker->randomNumber(5)
         ];
     }

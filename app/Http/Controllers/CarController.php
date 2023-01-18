@@ -90,9 +90,14 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function show(Car $car)
+    public function show($id): View
     {
-        //
+        try {
+            $car = Car::findOrFail($id);
+            return view('product', compact('car'));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**

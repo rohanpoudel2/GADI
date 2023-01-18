@@ -29,9 +29,7 @@ Route::get('/wishlist', function () {
     return view('wishList');
 });
 
-Route::get('/shop/product/{id}', function () {
-    return view('product');
-});
+Route::get('/shop/product/{id}', [CarController::class, 'show'])->name('car.show');
 
 Route::post('/addTestRide', [TestRideController::class, 'store'])->middleware('auth')->name('add.TestRide');
 

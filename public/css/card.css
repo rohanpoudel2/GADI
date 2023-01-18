@@ -19,7 +19,12 @@
 }
 
 .card .top .left .title {
-  font-size: 32px;
+  font-size: 28px;
+  font-weight: bold;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .card .top .right {
@@ -43,11 +48,14 @@
 
 .card .middle {
   margin: 20px 0px;
+  width: 400px;
+  height: 200px;
 }
 
 .card .middle img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .card .bottom {
@@ -61,6 +69,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.card .bottom .spec span {
+  font-weight: bold;
+}
+
+.card .bottom .price span {
+  font-weight: bold;
 }
 
 .card .bottom .spec:nth-of-type(2) {

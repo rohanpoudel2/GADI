@@ -5,8 +5,8 @@
         </div>
         <div class="right">
             <button class="buy-button">
-                <a href="/shop/product/1">
-                    Buy Now
+                <a href="{{ route('car.show', $id) }}">
+                    Explore
                 </a>
             </button>
         </div>

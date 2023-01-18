@@ -20,7 +20,7 @@
                     @endphp
                     <div class="left">
                         <img src="{{ $image }}" alt="car">
-                        <button class="book-button">Buy Now</button>
+                        <button class="book-button">Explore</button>
                     </div>
                     <div class="right">
                         <div class="note">

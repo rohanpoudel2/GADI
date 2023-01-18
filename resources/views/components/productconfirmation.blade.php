@@ -3,19 +3,22 @@
         <div class="product-confirm">
             <div class="product">
                 <div class="product-image">
-                    <img src="{{ asset('images/product/01.webp') }}" alt="product">
+                    <img src="{{ Storage::url($car->image) }}" alt="product">
                 </div>
                 <div class="product-spe">
                     <div class="product-title">
+                        <img src="{{ Storage::url($car->brand->image) }}" alt="">
                         <h1>
-                            BMW M4 CSL
+                            {{ $car->brand->name . ' ' . $car->model }}
                         </h1>
                     </div>
                     <div class="product-color">
-                        <span>CORAL</span>
+                        <span>Price:</span>
+                        ${{ $car->price }}
                     </div>
                 </div>
                 <button class="buy-button">Buy Now</button>
+                <button class="wishlist-button">❣️WishList</button>
             </div>
         </div>
     </div>
