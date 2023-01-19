@@ -26,6 +26,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes([
+    'verify' => true
+]);
+
 Route::get('/', [FeaturedProductController::class, 'index'])->name('featured.car');
 
 Route::post('/newsletter', [NewsletterController::class, 'store']);
