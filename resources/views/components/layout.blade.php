@@ -11,7 +11,8 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
-    <title>GADI 🚗</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/744/744465.png">
+    <title>@yield('page-title')🚗</title>
 </head>
 
 <body>
@@ -27,6 +28,36 @@
         @include('components.newsletter')
     @endif
     @include('components.footer')
+    <script>
+        const ride_button = document.getElementById('ride-button');
+        const testRideForm = document.getElementById('test-ride-form');
+        const testRideFormCloseButton = document.getElementById('quit-form');
+
+        ride_button.addEventListener('click', () => {
+            if (testRideForm.style.display === "none") {
+                testRideForm.style.display = "block";
+            } else {
+                testRideForm.style.display = "none";
+            }
+        })
+
+        testRideFormCloseButton.addEventListener('click', () => {
+            testRideForm.style.display = "none"
+        })
+
+        const cross = document.getElementById('cross');
+        const ham = document.getElementById('ham');
+
+        cross.addEventListener('click', () => {
+            var element = document.getElementById('navbar');
+            element.classList.remove('open');
+        })
+
+        ham.addEventListener('click', () => {
+            var element = document.getElementById('navbar');
+            element.classList.add('open');
+        })
+    </script>
 </body>
 
 </html>

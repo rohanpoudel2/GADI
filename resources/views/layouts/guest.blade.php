@@ -8,10 +8,12 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('page-title')🚗</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/744/744465.png">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])

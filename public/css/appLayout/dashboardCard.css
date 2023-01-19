@@ -127,3 +127,39 @@
 .dashboard-card form input {
   margin: 20px 0px;
 }
+
+@media screen and (max-width: 768px) {
+  .dashboard-card:nth-child(4) {
+    width: 100%;
+  }
+
+  .dashboard-card {
+    text-align: center;
+    width: 150px;
+  }
+
+  .dashboard-card .car-name {
+    font-size: 16px;
+  }
+
+  .dashboard-card .tag-line {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .featured-product-dashboard {
+    flex-direction: column;
+  }
+
+  .dashboard-card select {
+    width: 100px
+  }
+
+  .dashboard-card input {
+    width: 150px;
+  }
+
+  .dashboard-card .data-featured .featured-product-image {
+    width: 150px !important;
+  }
+}

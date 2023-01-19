@@ -30,3 +30,13 @@
   padding: 10px 15px;
   border-radius: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .dashboard-showCars .topbar {
+    flex-direction: column;
+  }
+
+  .dashboard-showCars {
+    margin-left: 0px;
+  }
+}

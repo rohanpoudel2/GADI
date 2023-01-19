@@ -1,4 +1,7 @@
 <x-layout>
+    @section('page-title')
+        HOME
+    @endsection
     @component('components.hero')
         @slot('image')
             {{ asset('images/hero_image.jpg') }}
@@ -8,9 +11,8 @@
         @endslot
         @slot('desc')
             <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus sapiente dolor error libero quo odio porro,
-                fugiat blanditiis fugit molestiae, a similique numquam provident natus, incidunt reiciendis rerum earum
-                possimus?
+                Find your dream car at our easy-to-use website. Browse our extensive inventory of new and used vehicles,
+                filter cars and get great offers. Shop now and drive away happy!
             </p>
         @endslot
     @endcomponent

@@ -50,3 +50,15 @@
 .wishlist-card .buttons .delete-button {
   background-color: red;
 }
+
+@media screen and (max-width: 768px) {
+  .wishlist-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .wishlist-card .buttons {
+    position: relative;
+    margin: 10px 0px;
+  }
+}

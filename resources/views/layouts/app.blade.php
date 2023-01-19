@@ -9,13 +9,14 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/744/744465.png">
+    <title>@yield('page-title')🚗</title>
 </head>
 
 <body>
@@ -55,6 +56,19 @@
                 imagePreviewElement.style.display = "block";
             }
         };
+
+        const menu = document.getElementById('menu');
+        const close = document.getElementById('close');
+
+        menu.addEventListener('click', () => {
+            var element = document.getElementById('humm');
+            element.classList.add('open');
+        })
+
+        close.addEventListener('click', () => {
+            var element = document.getElementById('humm');
+            element.classList.remove('open');
+        })
     </script>
 </body>
 

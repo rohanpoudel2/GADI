@@ -58,3 +58,51 @@
   position: fixed;
   bottom: 10px;
 }
+
+.open-dashboard,
+.close-dashboard {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 32px;
+  z-index: 100;
+}
+
+.open-dashboard {
+  display: none;
+}
+
+.close-dashboard {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard-nav {
+    position: fixed;
+    transform: translateX(-100%);
+    transition: transform .5s;
+  }
+
+  .open .dashboard-nav {
+    transform: translateX(0);
+    transition: transform .5s;
+  }
+
+  .open .close-dashboard {
+    display: block;
+  }
+
+  .open-dashboard {
+    display: block;
+  }
+
+  .close-dashboard {
+    display: none;
+  }
+
+  .open .open-dashboard {
+    display: none;
+  }
+
+
+}

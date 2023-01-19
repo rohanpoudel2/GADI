@@ -1,4 +1,7 @@
 <x-guest-layout>
+    @section('page-title')
+        Register
+    @endsection
     <form method="POST" action="{{ route('register') }}" class="login-form-items">
         @csrf
 

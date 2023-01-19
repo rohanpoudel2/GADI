@@ -20,7 +20,9 @@
                     @endphp
                     <div class="left">
                         <img src="{{ $image }}" alt="car">
-                        <button class="book-button">Explore</button>
+                        <a href="/shop/product/{{ $feature->car->id }}">
+                            <button class="book-button">Explore</button>
+                        </a>
                     </div>
                     <div class="right">
                         <div class="note">

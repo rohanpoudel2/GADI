@@ -62,3 +62,30 @@
   padding: 10px 20px;
   border-radius: 50px;
 }
+
+@media screen and (max-width: 768px) {
+  .hero {
+    height: 60vh;
+  }
+
+  .hero-title h1 {
+    font-size: 36px;
+  }
+
+  .hero-desc {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .hero-title h1 {
+    font-size: 28px;
+  }
+
+  .hero-title span {
+    font-size: 10px;
+    margin-bottom: 30px;
+  }
+
+}

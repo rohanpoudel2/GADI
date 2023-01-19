@@ -10,10 +10,19 @@
             <h1 class="title">
                 @if ($isShowCars)
                     Cars
+                    @section('page-title')
+                        Cars Data
+                    @endsection
                 @elseif($isShowBrands)
                     Brands
+                    @section('page-title')
+                        Brands Data
+                    @endsection
                 @else
                     Users
+                    @section('page-title')
+                        Users Data
+                    @endsection
                 @endif
             </h1>
             <button class="add-new-car">

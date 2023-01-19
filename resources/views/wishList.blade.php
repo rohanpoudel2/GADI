@@ -1,4 +1,7 @@
 <x-layout>
+    @section('page-title')
+        Wishlist
+    @endsection
     <div class="container">
         <section class="wishlist">
             <div class="title">

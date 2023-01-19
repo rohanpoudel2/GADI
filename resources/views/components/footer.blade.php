@@ -4,10 +4,7 @@
             <div class="footer-logo">
                 <h1>GADI</h1>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit cumque quos sit nam accusantium
-                    velit,
-                    optio, repellendus beatae dolore nostrum in facere praesentium. Architecto ea fugiat ratione vero
-                    eveniet atque?
+                    We are the best at what we do. Best in class cars at best in class price.
                 </p>
             </div>
             <div class="socials">

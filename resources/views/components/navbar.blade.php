@@ -3,11 +3,19 @@
     $isRegister = Request::is('register');
     $isForgot = Request::is('forgot-password');
 @endphp
-<nav>
+<nav id="navbar">
     <div class="nav-items">
         <div class="left">
             <div class="logo"><a href="/">GADI</a></div>
         </div>
+        <div class="cross" id='cross'>
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        @if ($isLogin || $isRegister || $isForgot)
+            <div class="nav-item" style="display: flex; justify-content:flex-end;">
+            @else
+                <div class="nav-item">
+        @endif
         @if (!($isLogin || $isRegister || $isForgot))
             <div class="middle">
                 <div class="nav-links">
@@ -32,7 +40,7 @@
             @else
                 <div class="nav-button">
                     @if (Auth::user() && Auth::user()->isAdmin())
-                        <a href="{{ url('/dashboard') }}">
+                        <a href="/dashboard">
                             <button class="ride-button" id="dashboard-button">Dashboard</button>
                         </a>
                     @else
@@ -41,6 +49,10 @@
                 </div>
             @endif
         </div>
+    </div>
+    <div class="hamburger" id='ham'>
+        <i class="fa-solid fa-bars"></i>
+    </div>
     </div>
 </nav>
 

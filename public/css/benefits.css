@@ -2,6 +2,7 @@
   font-size: 36px;
   color: var(--secondary-font-color);
   text-align: center;
+  font-weight: bold;
 }
 
 .advantage-section p {
@@ -57,3 +58,26 @@
 .advantage:nth-of-type(3) {
   background-color: #F1FEEF;
 }
+
+@media screen and (max-width: 768px) {
+
+  .advantage-title {
+    font-size: 28px;
+  }
+
+  .advantage-section p {
+    font-size: 14px;
+  }
+
+  .advantages {
+    margin: 50px 0px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .advantage:nth-of-type(2) {
+    margin: 10px 0px;
+  }
+}
+
+@media screen and (max-width: 480px) {}

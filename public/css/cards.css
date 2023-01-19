@@ -49,3 +49,24 @@
   justify-content: center;
   gap: 20px;
 }
+
+@media screen and (max-width: 768px) {
+
+  .cards-section .title h1 {
+    font-size: 24px;
+  }
+
+  .cards-section .filter-bar form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .cards-section .filter-bar .search-bar {
+    margin-top: 20px;
+  }
+
+  .cards-section .filter-bar button {
+    margin-top: 20px;
+  }
+
+}

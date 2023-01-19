@@ -1,4 +1,7 @@
 <x-app-layout>
+    @section('page-title')
+        Dashboard
+    @endsection
     <div class="dashboard">
         @if (isset($error))
             {{ $error }}

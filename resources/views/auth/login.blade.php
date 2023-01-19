@@ -1,4 +1,7 @@
 <x-guest-layout>
+    @section('page-title')
+        Login
+    @endsection
     <!-- Session Status -->
     <x-auth-session-status :status="session('status')" />
 
@@ -41,5 +44,8 @@
                 </div>
             </x-primary-button>
         </div>
+        <a href="{{ route('register') }}" class="forgot-password">
+            Already have an account ?
+        </a>
     </form>
 </x-guest-layout>

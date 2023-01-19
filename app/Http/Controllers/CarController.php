@@ -60,28 +60,32 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+        try {
+            $data = $request->validate([
+                'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
+                'brand' => 'required|integer|exists:brands,id',
+                'type' => 'required|string',
+                'model' => 'required|string',
+                'year' => 'required|integer',
+                'engine' => 'required|string',
+                'power' => 'required|integer',
+                'topspeed' => 'required|integer',
+                'interior' => 'required|string',
+                'transmission' => 'required|string',
+                'description' => 'required|string|max:2000',
+                'price' => 'required|numeric',
+            ]);
 
-        $data = $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
-            'brand' => 'required|integer|exists:brands,id',
-            'type' => 'required|string',
-            'model' => 'required|string',
-            'year' => 'required|integer',
-            'engine' => 'required|string',
-            'power' => 'required|integer',
-            'topspeed' => 'required|integer',
-            'interior' => 'required|string',
-            'transmission' => 'required|string',
-            'description' => 'required|string|max:2000',
-            'price' => 'required|numeric',
-        ]);
+            $path = $request->file('image')->store('public/images/cars');
+            $data['image'] = $path;
+            $brand = Brand::findOrFail($data['brand']);
+            $car = $brand->cars()->create($data);
 
-        $path = $request->file('image')->store('public/images/cars');
-        $data['image'] = $path;
-        $brand = Brand::findOrFail($data['brand']);
-        $car = $brand->cars()->create($data);
+            return redirect()->route('dashboard')->with('success', 'Car has been added.');
+        } catch (\Throwable $th) {
+            return redirect()->route('dashboard')->with('error', $th->getMessage());
+        }
 
-        return redirect()->route('dashboard')->with('success', 'Car has been added.');
     }
 
     /**
@@ -108,15 +112,19 @@ class CarController extends Controller
      */
     public function edit(Request $request): View|RedirectResponse
     {
-        //
-        $request->validate(['id' => 'required|integer']);
-        $car = Car::with('brand')->find($request->id);
-        $brands = Brand::get();
-        if ($car) {
-            return view('dashboard.addNew', compact('car', 'brands'));
-        } else {
+        try {
+            $request->validate(['id' => 'required|integer']);
+            $car = Car::with('brand')->find($request->id);
+            $brands = Brand::get();
+            if ($car) {
+                return view('dashboard.addNew', compact('car', 'brands'));
+            } else {
+                return redirect()->route('dashboard')->with('error', 'Car Not Found.');
+            }
+        } catch (\Throwable $th) {
             return redirect()->route('dashboard')->with('error', 'Car Not Found.');
         }
+
     }
 
     /**

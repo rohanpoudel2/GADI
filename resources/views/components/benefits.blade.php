@@ -2,10 +2,7 @@
     <div class="container">
         <h1 class="advantage-title">Benefits you get <br />when you buy our cars</h1>
         <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus exercitationem eius, perferendis ipsa
-            nulla
-            consequatur maxime molestiae placeat doloribus praesentium a odit ducimus ut est, cumque error quis dicta
-            earum!
+            We are the best at what we do. Best in class cars at best in class price.
         </p>
         <div class="advantages">
             <div class="advantage">
@@ -15,9 +12,7 @@
                 </div>
                 <div class="desc">
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis distinctio laborum, ratione
-                        libero numquam sint esse ducimus quasi voluptatem quos molestiae at excepturi dolorum natus sit
-                        eius obcaecati veritatis amet.
+                        We offer home delivery service to over customer.
                     </p>
                 </div>
             </div>
@@ -28,9 +23,7 @@
                 </div>
                 <div class="desc">
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis distinctio laborum, ratione
-                        libero numquam sint esse ducimus quasi voluptatem quos molestiae at excepturi dolorum natus sit
-                        eius obcaecati veritatis amet.
+                        We have massive servicing network all around the world.
                     </p>
                 </div>
             </div>
@@ -41,9 +34,7 @@
                 </div>
                 <div class="desc">
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis distinctio laborum, ratione
-                        libero numquam sint esse ducimus quasi voluptatem quos molestiae at excepturi dolorum natus sit
-                        eius obcaecati veritatis amet.
+                        All our customers get free gas for one year.
                     </p>
                 </div>
             </div>

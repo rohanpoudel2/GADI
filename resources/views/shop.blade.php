@@ -1,4 +1,7 @@
 <x-layout>
+    @section('page-title')
+        SHOP
+    @endsection
     @component('components.hero')
         @slot('image')
             {{ asset('images/hero-image2.jpg') }}
