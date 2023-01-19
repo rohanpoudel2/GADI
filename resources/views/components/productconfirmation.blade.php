@@ -17,7 +17,9 @@
                         ${{ $car->price }}
                     </div>
                 </div>
-                <button class="buy-button">Buy Now</button>
+                <a href="/checkout/{{ $car->id }}">
+                    <button class="buy-button">Buy Now</button>
+                </a>
                 <button class="wishlist-button">❣️WishList</button>
             </div>
         </div>

@@ -1,0 +1,48 @@
+.checkout-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-section .title {
+  font-size: 42px;
+  font-weight: bold;
+  border-bottom: 2px solid var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.checkout-section .checkout-product img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.checkout-section .checkout-product .product {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-section .checkout-product .car-name {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.checkout-section .checkout-product .checkout-form form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.checkout-section .checkout-product .checkout-form button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.checkout-section .checkout-product .checkout-form span {
+  font-size: 22px;
+  color: red;
+}

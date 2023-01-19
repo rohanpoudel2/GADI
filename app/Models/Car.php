@@ -53,4 +53,9 @@ class Car extends Model
     {
         return $this->hasMany(TestRide::class);
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

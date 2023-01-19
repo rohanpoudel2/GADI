@@ -26,9 +26,13 @@
             </div>
         </div>
     @endif
-    @if (session()->has('success'))
+    @if (session()->has('success') || request()->has('successPayment'))
         <div class="alert alert-success">
-            <p>{{ session('success') }}</p>
+            @if (session()->has('success'))
+                <p>{{ session('success') }}</p>
+            @else
+                <p>{{ request('successPayment') }}
+            @endif
         </div>
     @elseif(session()->has('error'))
         <div class="alert alert-error">

@@ -4,6 +4,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeaturedProductController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestRideController;
 use App\Models\FeaturedProduct;
@@ -28,6 +29,9 @@ Route::get('/shop', [CarController::class, 'index'])->name('cars.show');
 Route::get('/wishlist', function () {
     return view('wishList');
 });
+
+Route::get('/checkout/{id}', [PaymentController::class, 'index'])->name('show.checkout');
+Route::post('/checkout/{id}', [PaymentController::class, 'checkout'])->middleware('auth')->name('checkout');
 
 Route::get('/shop/product/{id}', [CarController::class, 'show'])->name('car.show');
 

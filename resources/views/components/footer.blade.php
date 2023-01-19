@@ -11,36 +11,28 @@
                 </p>
             </div>
             <div class="socials">
-                @if (Route::has('login'))
-                    <div class="hidden">
-                        @auth
-                            <div class="social">
-                                <form method="POST" action="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                            this.closest('form').submit();">
-                                    @csrf
-                                    <a href="{{ route('logout') }}"
-                                        class="text-sm text-gray-700 dark:text-gray-500 underline">
-                                        <i class="fa-solid fa-right-from-bracket"></i>
-                                        Logout
-                                    </a>
-                                </form>
-                            </div>
-                        @else
-                            <div class="social">
-                                <a href="{{ route('login') }}"
-                                    class="text-sm text-gray-700 dark:text-gray-500 underline">Log
-                                    in</a>
-                            </div>
-                            @if (Route::has('register'))
-                                <div class="social">
-                                    <a href="{{ route('register') }}"
-                                        class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                                </div>
-                            @endif
-                        @endauth
+                @auth
+                    <div class="social">
+                        <form method="POST" action="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                this.closest('form').submit();">
+                            @csrf
+                            <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                Logout
+                            </a>
+                        </form>
                     </div>
-                @endif
+                @else
+                    <div class="social">
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log
+                            in</a>
+                    </div>
+                    <div class="social">
+                        <a href="{{ route('register') }}"
+                            class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                    </div>
+                @endauth
             </div>
         </div>
         <div class="middle">

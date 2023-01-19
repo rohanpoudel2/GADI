@@ -12,11 +12,26 @@ class FeaturedProductController extends Controller
     public function index(Request $request): View
     {
         $featuredCount = FeaturedProduct::get()->count();
+        $successPayment = $request->input('successPayment');
+        $failedPayment = $request->input('failedPayment');
+
         if ($featuredCount != 0) {
             $featured = FeaturedProduct::with('car')->get();
-            return view('home', compact('featured'));
+            if ($successPayment) {
+                return view('home', compact('featured'))->with('success', 'Payment Successful');
+            } elseif ($failedPayment) {
+                return view('home', compact('featured'))->with('error', 'Payment failed');
+            } else {
+                return view('home', compact('featured'));
+            }
         } else {
-            return view('home');
+            if ($successPayment) {
+                return view('home')->with('success', 'Payment Successful');
+            } elseif ($failedPayment) {
+                return view('home')->with('error', 'Payment failed');
+            } else {
+                return view('home');
+            }
         }
     }
 

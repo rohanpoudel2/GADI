@@ -16,6 +16,7 @@
 @import './guestLogin.css';
 @import './appLayout/appLayout.css';
 @import './customErrorPage.css';
+@import './checkout.css';
 
 *,
 *::before,
