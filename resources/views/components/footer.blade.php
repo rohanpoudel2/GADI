@@ -43,9 +43,21 @@
         <div class="middle">
             <h2>Menu</h2>
             <div class="footer-nav-links">
-                <span class="nav-link">Home</span>
-                <span class="nav-link">Shop</span>
-                <span class="nav-link">About</span>
+                <span class="nav-link">
+                    <a href="/">
+                        Home
+                    </a>
+                </span>
+                <span class="nav-link">
+                    <a href="/shop">
+                        Shop
+                    </a>
+                </span>
+                <span class="nav-link">
+                    <a href="/wishlist">
+                        Wishlist
+                    </a>
+                </span>
             </div>
         </div>
         <div class="right">

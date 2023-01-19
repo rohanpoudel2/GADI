@@ -6,9 +6,10 @@
                     Subscribe to get the Latest<br /> Product Updates
                 </h1>
             </div>
-            <form>
-                <input type="email" placeholder="Enter your Email Address">
-                <button class="subscribe-button">Subscribe</button>
+            <form action="/newsletter" method="POST">
+                @csrf
+                <input type="email" name="email" id="email" placeholder="Enter your Email Address" required>
+                <button class="subscribe-button" type="submit">Subscribe</button>
             </form>
         </div>
     </div>

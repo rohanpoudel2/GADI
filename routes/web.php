@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestRideController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\NewsletterController;
 use App\Models\FeaturedProduct;
 use App\Models\Wishlist;
 use Illuminate\Routing\Controllers\Middleware;
@@ -26,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FeaturedProductController::class, 'index'])->name('featured.car');
+
+Route::post('/newsletter', [NewsletterController::class, 'store']);
 
 Route::get('/shop', [CarController::class, 'index'])->name('cars.show');
 
