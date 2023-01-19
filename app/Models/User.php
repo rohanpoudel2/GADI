@@ -47,8 +47,8 @@ class User extends Authenticatable
         return $this->is_admin;
     }
 
-    public function payments()
+    public function wishlists()
     {
-        return $this->hasMany(Payment::class);
+        return $this->hasMany(Wishlist::class);
     }
 }

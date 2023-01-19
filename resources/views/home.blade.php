@@ -32,6 +32,15 @@
                 <p>{{ session('success') }}</p>
             @else
                 <p>{{ request('successPayment') }}
+                    <button onclick="re()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <script>
+                        function re() {
+                            location.href = "/";
+                        }
+                    </script>
+                </p>
             @endif
         </div>
     @elseif(session()->has('error'))

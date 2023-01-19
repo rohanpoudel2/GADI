@@ -1,6 +1,7 @@
 @php
     $isShowCars = Request::is('addCar');
     $isShowBrands = Request::is('addBrand');
+    $isShowUsers = Request::is('addUser');
     $isEditBrand = Request::is('editBrand');
     $isEditCar = Request::is('editCar');
 @endphp
@@ -111,6 +112,29 @@
             <input type="text" name="name" id="name" required />
             </div>
             ',
+        ];
+    @endphp
+@elseif ($isShowUsers)
+    @php
+        $formFields = [
+            '
+    <div class="form-item">
+        <label for="name">User Name:</label>
+        <input type="text" name="name" id="name" required />
+    </div>
+    ',
+            '
+    <div class="form-item">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required />
+    </div>
+    ',
+            '
+    <div class="form-item">
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required />
+    </div>
+    ',
         ];
     @endphp
 @elseif ($isEditBrand)
@@ -273,6 +297,8 @@
                     Add New Car
                 @elseif($isShowBrands)
                     Add New Brand
+                @elseif($isShowUsers)
+                    Add New User
                 @elseif($isEditBrand)
                     Edit Brand
                 @elseif ($isEditCar)
@@ -287,6 +313,8 @@
                         /addCar
                     @elseif($isShowBrands)
                         /addBrand
+                    @elseif($isShowUsers)
+                        /register
                     @elseif($isEditBrand)
                         /editBrand
                     @elseif($isEditCar)
@@ -306,6 +334,8 @@
                         Add Car
                     @elseif($isShowBrands)
                         Add Brand
+                    @elseif($isShowUsers)
+                        Add User
                     @elseif($isEditBrand)
                         Edit brand
                     @elseif($isEditCar)

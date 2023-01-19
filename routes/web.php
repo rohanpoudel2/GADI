@@ -7,7 +7,10 @@ use App\Http\Controllers\FeaturedProductController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestRideController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishlistController;
 use App\Models\FeaturedProduct;
+use App\Models\Wishlist;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +29,10 @@ Route::get('/', [FeaturedProductController::class, 'index'])->name('featured.car
 
 Route::get('/shop', [CarController::class, 'index'])->name('cars.show');
 
-Route::get('/wishlist', function () {
-    return view('wishList');
+Route::middleware('auth')->group(function () {
+    Route::get('/wishlist', [WishlistController::class, 'show'])->name('wishlist.show');
+    Route::post('/wishlist', [WishlistController::class, 'create'])->name('wishlist.add');
+    Route::delete('/wishlist', [WishlistController::class, 'destroy'])->name('wishlist.delete');
 });
 
 Route::get('/checkout/{id}', [PaymentController::class, 'index'])->name('show.checkout');
@@ -37,8 +42,10 @@ Route::get('/shop/product/{id}', [CarController::class, 'show'])->name('car.show
 
 Route::post('/addTestRide', [TestRideController::class, 'store'])->middleware('auth')->name('add.TestRide');
 
+Route::get('/dashboard', [DashboardController::class, 'stats'])->middleware('auth')->name('dashboard');
+
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'stats'])->name('dashboard');
+
     Route::post('/dashboard', [FeaturedProductController::class, 'store'])->name('dashboard.addFeatured');
     Route::delete('/dashboard', [FeaturedProductController::class, 'destroy'])->name('dashboard.deleteFeatured');
 
@@ -55,6 +62,9 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::delete('/brands', [BrandController::class, 'destroy'])->name('dashboard.DestoryBrand');
     Route::get('/editBrand', [BrandController::class, 'edit'])->name('dashboard.editBrandForm');
     Route::patch('/editBrand', [BrandController::class, 'update'])->name('dashboard.editBrand');
+
+    Route::get('/users', [UserController::class, 'index'])->name('dashboard.showUsers');
+    Route::delete('/users', [UserController::class, 'destroy'])->name('dashboard.DestoryUser');
 
 });
 

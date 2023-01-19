@@ -13,6 +13,11 @@
             <div class="socials">
                 @auth
                     <div class="social">
+                        <a href="{{ url('/dashboard') }}">
+                            Dashboard
+                        </a>
+                    </div>
+                    <div class="social">
                         <form method="POST" action="{{ route('logout') }}"
                             onclick="event.preventDefault();
                 this.closest('form').submit();">

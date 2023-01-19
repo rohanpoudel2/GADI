@@ -46,6 +46,15 @@
         <h1>
             {{ $normalUserCount }}
         </h1>
+        <div class="recentActivity">
+            <div class="left">
+                @if ((string) $recentlyAddedUsers->isEmpty())
+                    + 0
+                @else
+                    + {{ $recentlyAddedUsers }}
+                @endif
+            </div>
+        </div>
     </div>
 </div>
 

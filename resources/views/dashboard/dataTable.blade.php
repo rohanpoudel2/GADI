@@ -1,6 +1,7 @@
 @php
     $isShowCars = Request::is('cars');
     $isShowBrands = Request::is('brands');
+    $isShowUsers = Request::is('users');
 @endphp
 
 <div class="dataTable">
@@ -98,7 +99,7 @@
                 @endforeach
             </tbody>
         </table>
-    @else
+    @elseif($isShowBrands)
         <table id="dataTable" class="hover">
             <thead>
                 <tr>
@@ -137,6 +138,43 @@
                                             hidden>
                                         <button type="submit">
                                             <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <table id="dataTable" class="hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>
+                            {{ $user->id }}
+                        </td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>
+                            <div class="actions">
+                                <div class="delete">
+                                    <form method="post" action="/users">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="text" name="id" id="id" value="{{ $user->id }}"
+                                            required hidden>
+                                        <button type="submit">
+                                            <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>
                                 </div>

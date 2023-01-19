@@ -20,7 +20,11 @@
                 <a href="/checkout/{{ $car->id }}">
                     <button class="buy-button">Buy Now</button>
                 </a>
-                <button class="wishlist-button">❣️WishList</button>
+                <form action="{{ Route('wishlist.add') }}" method="POST">
+                    @csrf
+                    <input type="text" name="car_id" id="car_id" value="{{ $car->id }}" required hidden>
+                    <button class="wishlist-button">❣️WishList</button>
+                </form>
             </div>
         </div>
     </div>

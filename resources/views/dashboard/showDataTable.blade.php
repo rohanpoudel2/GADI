@@ -2,6 +2,7 @@
     @php
         $isShowCars = Request::is('cars');
         $isShowBrands = Request::is('brands');
+        $isShowUsers = Request::is('users');
     @endphp
 
     <div class="dashboard-showCars">
@@ -9,8 +10,10 @@
             <h1 class="title">
                 @if ($isShowCars)
                     Cars
-                @else
+                @elseif($isShowBrands)
                     Brands
+                @else
+                    Users
                 @endif
             </h1>
             <button class="add-new-car">
@@ -18,10 +21,11 @@
                     <a href="{{ Route('dashboard.addCarForm') }}">
                         Add New Car
                     </a>
-                @else
+                @elseif($isShowBrands)
                     <a href="{{ Route('dashboard.addBrandForm') }}">
                         Add New Brand
                     </a>
+                @else
                 @endif
             </button>
         </div>

@@ -18,6 +18,7 @@ class DashboardController extends Controller
     $recentlyAddedBrand = CountServiceProvider::getRecentlyAddedBrand();
 
     $normalUser = CountServiceProvider::getNormalUserCount();
+    $recentlyAddedUsers = CountServiceProvider::getRecentlyAddedUser();
 
     $featuredProductCount = CountServiceProvider::getFeaturedProductCount();
 
@@ -25,9 +26,9 @@ class DashboardController extends Controller
 
     if ((string) $featuredProductCount != 0) {
       $featuredProduct = FeaturedProduct::with('car')->get();
-      return View('dashboard.dashboard', compact('carCount', 'recentlyAddedCar', 'brandCount', 'recentlyAddedBrand', 'normalUser', 'featuredProduct', 'cars'));
+      return View('dashboard.dashboard', compact('carCount', 'recentlyAddedCar', 'brandCount', 'recentlyAddedBrand', 'recentlyAddedUsers', 'normalUser', 'featuredProduct', 'cars'));
     } else {
-      return View('dashboard.dashboard', compact('carCount', 'recentlyAddedCar', 'brandCount', 'recentlyAddedBrand', 'normalUser', 'cars'));
+      return View('dashboard.dashboard', compact('carCount', 'recentlyAddedCar', 'brandCount', 'recentlyAddedBrand', 'recentlyAddedUsers', 'normalUser', 'cars'));
     }
 
   }

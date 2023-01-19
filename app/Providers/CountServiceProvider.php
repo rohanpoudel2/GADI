@@ -15,6 +15,7 @@ class CountServiceProvider extends ServiceProvider
   private static $recentlyAddedCars;
   private static $brandCount;
   private static $recentlyAddedBrands;
+  private static $recentlyAddedUsers;
   private static $normalUserCount;
   private static $featuredProductCount;
 
@@ -61,6 +62,14 @@ class CountServiceProvider extends ServiceProvider
       self::$recentlyAddedBrands = Brand::where('created_at', '>=', Carbon::now()->subDays(5))->count();
     }
     return self::$recentlyAddedBrands;
+  }
+
+  public static function getRecentlyAddedUser()
+  {
+    if (!self::$recentlyAddedUsers) {
+      self::$recentlyAddedUsers = User::where('created_at', '>=', Carbon::now()->subDays(5))->where('is_admin', 0)->count();
+    }
+    return self::$recentlyAddedUsers;
   }
 
   public static function getFeaturedProductCount()
