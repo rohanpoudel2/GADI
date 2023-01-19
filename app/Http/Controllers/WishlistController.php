@@ -20,7 +20,7 @@ class WishlistController extends Controller
     {
         try {
             $data = $request->validate([
-                'car_id' => 'required|unique:wishlists,car_id|exists:cars,id'
+                'car_id' => 'required|exists:cars,id'
             ]);
             $user = Auth::user();
             $wishlist = $user->wishlists()->create($data);

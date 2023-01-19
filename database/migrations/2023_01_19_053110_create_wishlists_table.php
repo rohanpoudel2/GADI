@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('car_id')->unsigned()->unique();
+            $table->bigInteger('car_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
         });

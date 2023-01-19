@@ -1,4 +1,7 @@
 <x-layout>
+    @section('page-title')
+        Checkout
+    @endsection
     <div class="container">
         <section class="checkout-section">
             <div class="title">Checkout Page</div>
@@ -8,6 +11,7 @@
                     <div class="car-name">
                         {{ $car->brand->name . ' ' . $car->model }}
                     </div>
+                    ${{ $car->price }}
                 </div>
                 <div class="checkout-form">
                     <form action="/checkout/{{ $car->id }}" method="POST">

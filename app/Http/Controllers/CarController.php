@@ -166,7 +166,7 @@ class CarController extends Controller
             $car->update($data);
             return redirect()->route('dashboard')->with('success', 'Car has been updated.');
         } catch (\Throwable $th) {
-            return redirect()->route('dashboard')->with('error', 'Car has not been updated.');
+            return redirect()->route('dashboard')->with('error', $th->getMessage());
         }
     }
 
