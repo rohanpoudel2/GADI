@@ -4,7 +4,9 @@
     </div>
 
     <!-- Session Status -->
-    <x-auth-session-status :status="session('status')" />
+    <div style="color:var(--primary-color)">
+        <x-auth-session-status :status="session('status')" />
+    </div>
 
     <form method="POST" action="{{ route('password.email') }}" class="login-form-items">
         @csrf

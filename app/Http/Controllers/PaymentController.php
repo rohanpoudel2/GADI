@@ -56,14 +56,6 @@ class PaymentController extends Controller
                 ],
             ]);
 
-            // $payment = new Payment;
-            // $payment->transaction_id = $paymentIntent->id;
-            // $payment->user_id = $user->id;
-            // $payment->car_id = $car->id;
-            // $payment->amount = $paymentIntent->amount;
-            // $payment->status = true;
-            // $payment->save();
-
             return redirect()->away($session->url);
         } catch (\Throwable $th) {
             return redirect()->route('featured.car')->with('error', '👎🏻' . $th->getMessage());
