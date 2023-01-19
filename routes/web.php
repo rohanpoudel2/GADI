@@ -36,14 +36,14 @@ Route::post('/newsletter', [NewsletterController::class, 'store']);
 
 Route::get('/shop', [CarController::class, 'index'])->name('cars.show');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/wishlist', [WishlistController::class, 'show'])->name('wishlist.show');
     Route::post('/wishlist', [WishlistController::class, 'create'])->name('wishlist.add');
     Route::delete('/wishlist', [WishlistController::class, 'destroy'])->name('wishlist.delete');
 });
 
 Route::get('/checkout/{id}', [PaymentController::class, 'index'])->name('show.checkout');
-Route::post('/checkout/{id}', [PaymentController::class, 'checkout'])->middleware('auth')->name('checkout');
+Route::post('/checkout/{id}', [PaymentController::class, 'checkout'])->middleware(['auth', 'verified'])->name('checkout');
 
 Route::get('/shop/product/{id}', [CarController::class, 'show'])->name('car.show');
 
